@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1A1A1E">
+    <meta name="description" content="Designação de Funções - Salão do Reino">
+    <title>Designação de Funções - Salão do Reino</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="1000322334.png" type="image/png">
+    <link rel="apple-touch-icon" href="1000322334.png">
+    
+    <!-- Importação da Fonte Cabin -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #08394E;
+            --bg-header: #08394E;
+            --primary-accent: #FFB700;
+            --text-light: #FFFFFF; 
+            --text-muted: #8E8E93;
+            --bg-bottom-sheet: #EEEEEE;
+            --card-white: #FFFFFF;
+            --border-light: rgba(44, 42, 30, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Cabin", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* --- CABEÇALHO ESCURO --- */
+        .app-header {
+            background-color: var(--bg-header);
+            padding: 24px 20px 24px 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Título Principal */
+        .titulo-principal {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+            text-align: center;
+        }
+
+        /* Carrossel de Semanas */
+        .carousel-semanas {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 4px 0 8px 0;
+            scrollbar-width: none;
+            min-height: 68px;
+        }
+
+        .carousel-semanas::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Design de Card Vertical Compacto e Inteligente */
+        .semana-card {
+            flex: 0 0 105px;
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 12px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .semana-card .data-linha {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            white-space: nowrap;
+        }
+
+        .semana-card .data-separador {
+            font-size: 12px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: lowercase;
+        }
+
+        /* Estado Ativo (Selecionado) */
+        .semana-card.ativa {
+            background-color: var(--card-white);
+            border-color: var(--card-white);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .semana-card.ativa .data-linha {
+            color: #08394E;
+            font-weight: 700;
+        }
+
+        .semana-card.ativa .data-separador {
+            color: #8E8E93;
+            font-weight: 500;
+        }
+
+        /* --- CONTEÚDO INFERIOR (FUNDO CLARO) --- */
+        .bottom-sheet {
+            background-color: var(--bg-bottom-sheet);
+            border-radius: 30px 30px 0 0;
+            padding: 24px 20px 40px 20px;
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .card-funcao {
+            background-color: var(--card-white);
+            border-radius: 18px;
+            padding: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 110px;
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .card-funcao:hover {
+            transform: translateY(-2px);
+        }
+
+        .barra-lateral {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+        }
+
+        .funcao-titulo {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1C1C1C;
+            align-self: flex-start;
+        }
+
+        .nomes-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: 10px;
+            width: 100%;
+            gap: 5px;
+        }
+.nomes-container.em-linha {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Cria um separador "/" elegante entre os nomes */
+.nomes-container.em-linha #txt-v2::before {
+    content: "/";
+    margin-right: 8px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+        .nome-irmao {
+            font-size: 22px;
+            font-weight: 400;
+            color: #141416;
+            letter-spacing: -0.4px;
+            text-align: right;
+        }
+
+        .nome-irmao.vazio {
+            font-size: 16px;
+            color: #A3A090;
+            font-weight: 400;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER ESCURO -->
+    <header class="app-header">
+        <div class="header-content">
+            <h1 class="titulo-principal" id="app-titulo">Designação Semanal</h1>
+            
+            <div class="carousel-semanas" id="semanas-carousel-container">
+                <!-- Inserido via Javascript -->
+            </div>
+        </div>
+    </header>
+    
+    <!-- LISTA DE ESCALAS -->
+    <main class="bottom-sheet">
+        <div class="cards-list">
+            
+            <div class="card-funcao">
+                <div class="barra-lateral" style="background-color: var(--primary-accent);"></div>
+                <span class="funcao-titulo">🎼 ÁUDIO E VIDEO</span>
+                <div class="nomes-container">
+                    <div class="nome-irmao" id="txt-audio">...</div>
+                </div>
+            </div>
+
+            <div class="card-funcao">
+                <div class="barra-lateral" style="background-color: #4F46E5;"></div>
+                <span class="funcao-titulo">🎙️ PALCO</span>
+                <div class="nomes-container">
+                    <div class="nome-irmao" id="txt-palco">...</div>
+                </div>
+            </div>
+
+            <div class="card-funcao">
+                <div class="barra-lateral" style="background-color: #0D9488;"></div>
+                <span class="funcao-titulo">🎤 MICROFONE VOLANTE</span>
+                <div class="nomes-container em-linha">
+                    <div class="nome-irmao" id="txt-v1">...</div>
+                    <div class="nome-irmao" id="txt-v2">...</div>
+                </div>
+            </div>
+
+            <div class="card-funcao">
+                <div class="barra-lateral" style="background-color: #DC2626;"></div>
+                <span class="funcao-titulo">👉🏽 INDICADOR INTERNO</span>
+                <div class="nomes-container">
+                    <div class="nome-irmao" id="txt-ind-interno">...</div>
+                </div>
+            </div>
+
+            <div class="card-funcao">
+                <div class="barra-lateral" style="background-color: #16A34A;"></div>
+                <span class="funcao-titulo">🚪 INDICADOR EXTERNO</span>
+                <div class="nomes-container">
+                    <div class="nome-irmao" id="txt-ind-externo">...</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const URL_PLANILHA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSBuS_Qe2LkVH7QEPbSvoFn50e7I71Waljbuk8b2UR1wxGkYZMoeEZUy7Moy1DF4pMfRlRsn0tyNDu4/pub?output=csv";
+
+let bancoDeDados = [];
+let indiceAtual = 0;
+const idsCampos = ['audio', 'palco', 'v1', 'v2', 'ind-interno', 'ind-externo'];
+
+const mesesMap = {
+    'jan': 'Jan', 'fev': 'Fev', 'mar': 'Mar', 'abr': 'Abr', 'mai': 'Mai', 'jun': 'Jun',
+    'jul': 'Jul', 'ago': 'Ago', 'set': 'Set', 'out': 'Out', 'nov': 'Nov', 'dez': 'Dez',
+    'janeiro': 'Jan', 'fevereiro': 'Fev', 'março': 'Mar', 'marco': 'Mar', 'abril': 'Abr',
+    'maio': 'Mai', 'junho': 'Jun', 'julho': 'Jul', 'agosto': 'Ago', 'setembro': 'Set',
+    'outubro': 'Out', 'novembro': 'Nov', 'dezembro': 'Dez'
+};
+
+const mesesIndices = {
+    'jan': 0, 'fev': 1, 'mar': 2, 'abr': 3, 'mai': 4, 'jun': 5, 'jul': 6, 'ago': 7, 'set': 8, 'out': 9, 'nov': 10, 'dez': 11,
+    'janeiro': 0, 'fevereiro': 1, 'março': 2, 'marco': 2, 'abril': 3, 'maio': 4, 'junho': 5, 'julho': 6, 'agosto': 7, 'setembro': 8, 'outubro': 9, 'novembro': 10, 'dezembro': 11
+};
+
+async function carregarDadosDaPlanilha() {
+    try {
+        const resposta = await fetch(URL_PLANILHA);
+        const textoCSV = await resposta.text();
+        
+        const linhas = textoCSV.split(/\r?\n/);
+        if (linhas.length < 2) return;
+
+        const separador = linhas[0].includes(';') ? ';' : ',';
+        const cabecalhos = linhas[0].split(separador).map(c => c.trim().toLowerCase());
+
+        const novosDados = [];
+
+        for (let i = 1; i < linhas.length; i++) {
+            if (!linhas[i].trim()) continue;
+            
+            const colunas = linhas[i].split(separador);
+            let dadosSemana = {};
+
+            cabecalhos.forEach((cabecalho, index) => {
+                dadosSemana[cabecalho] = colunas[index] ? colunas[index].trim() : "";
+            });
+
+            if (dadosSemana.semana) {
+                novosDados.push(dadosSemana);
+            }
+        }
+
+        if(novosDados.length === 0) {
+            if (bancoDeDados.length === 0) document.getElementById('app-titulo').innerText = "Colunas Incorretas";
+            return;
+        }
+
+        // 🔥 Guarda no cache local para o próximo acesso ser instantâneo
+        bancoDeDados = novosDados;
+        localStorage.setItem('escala_cache', JSON.stringify(bancoDeDados));
+
+        // Atualiza a interface de forma limpa
+        indiceAtual = encontrarIndiceSemanaAtual();
+        construirCarrosselSemanas();
+        atualizarTela();
+
+    } catch (erro) {
+        console.error(erro);
+        // Só mostra erro se não houver absolutamente nada no banco de dados (nem no cache)
+        if (bancoDeDados.length === 0) {
+            document.getElementById('app-titulo').innerText = "Erro de Conexão";
+        }
+    }
+}
+
+function obterMetadadosSemana(textoSemana) {
+    if (!textoSemana) return { inicio: "Sem", fim: "Data" };
+
+    const partes = textoSemana.toLowerCase().split(/\s*[-–—]\s*|\s+(?:a|até)\s+/).filter(p => p.trim());
+
+    function extrairDiaEMes(texto, mesFixo = "") {
+        const matchBarra = texto.match(/(\d{1,2})\/(\d{1,2})/);
+        if (matchBarra) {
+            const dia = matchBarra[1].padStart(2, '0');
+            const numMes = parseInt(matchBarra[2]);
+            const nomes = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+            return { dia, mes: nomes[numMes - 1] || 'Jan' };
+        }
+
+        const diaMatch = texto.match(/(\d{1,2})/);
+        if (!diaMatch) return null;
+        const dia = diaMatch[1].padStart(2, '0');
+
+        let mes = mesFixo;
+        for (const key in mesesMap) {
+            if (texto.includes(key)) {
+                mes = mesesMap[key];
+                break;
+            }
+        }
+        return { dia, mes };
+    }
+
+    if (partes.length >= 2) {
+        let fimInfo = extrairDiaEMes(partes[1]);
+        let inicioInfo = extrairDiaEMes(partes[0], fimInfo ? fimInfo.mes : "");
+        
+        if (fimInfo && !fimInfo.mes && inicioInfo && inicioInfo.mes) {
+            fimInfo.mes = inicioInfo.mes;
+        }
+
+        if (inicioInfo && fimInfo) {
+            return {
+                inicio: `${inicioInfo.dia} ${inicioInfo.mes || 'Jan'}`,
+                fim: `${fimInfo.dia} ${fimInfo.mes || 'Jan'}`
+            };
+        }
+    } else if (partes.length === 1) {
+        let info = extrairDiaEMes(partes[0]);
+        if (info) return { inicio: `${info.dia} ${info.mes}`, fim: "---" };
+    }
+
+    return { inicio: "Ver", fim: "Planilha" };
+}
+
+function construirCarrosselSemanas() {
+    const container = document.getElementById('semanas-carousel-container');
+    container.innerHTML = '';
+
+    bancoDeDados.forEach((dados, i) => {
+        const meta = obterMetadadosSemana(dados.semana);
+
+        const card = document.createElement('div');
+        card.className = `semana-card ${i === indiceAtual ? 'ativa' : ''}`;
+        card.id = `card-sem-${i}`;
+        card.onclick = () => mudarSemana(i);
+
+        card.innerHTML = `
+            <span class="data-linha">${meta.inicio}</span>
+            <span class="data-separador">até</span>
+            <span class="data-linha">${meta.fim}</span>
+        `;
+
+        container.appendChild(card);
+    });
+
+    setTimeout(centralizarCardAtivo, 150);
+}
+
+function centralizarCardAtivo() {
+    const cardAtivo = document.getElementById(`card-sem-${indiceAtual}`);
+    if (cardAtivo) {
+        cardAtivo.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+}
+
+function encontrarIndiceSemanaAtual() {
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+    const anoAtual = hoje.getFullYear();
+
+    for (let i = 0; i < bancoDeDados.length; i++) {
+        const texto = bancoDeDados[i].semana;
+        if (!texto) continue;
+
+        const partes = texto.toLowerCase().split(/\s*[-–—]\s*|\s+(?:a|até)\s+/).filter(p => p.trim());
+        if (partes.length < 2) continue;
+
+        let diaIn = 1, mesIn = 0, diaFim = 1, mesFim = 0;
+
+        const mBarra1 = partes[0].match(/(\d{1,2})\/(\d{1,2})/);
+        const mBarra2 = partes[1].match(/(\d{1,2})\/(\d{1,2})/);
+
+        if (mBarra1 && mBarra2) {
+            diaIn = parseInt(mBarra1[1]);
+            mesIn = parseInt(mBarra1[2]) - 1;
+            diaFim = parseInt(mBarra2[1]);
+            mesFim = parseInt(mBarra2[2]) - 1;
+        } else {
+            const dMatch1 = partes[0].match(/(\d{1,2})/);
+            const dMatch2 = partes[1].match(/(\d{1,2})/);
+            if (!dMatch1 || !dMatch2) continue;
+
+            diaIn = parseInt(dMatch1[1]);
+            diaFim = parseInt(dMatch2[1]);
+
+            let mFimNome = "";
+            for (const k in mesesIndices) {
+                if (partes[1].includes(k)) { mFimNome = k; break; }
+            }
+            mesFim = mFimNome ? mesesIndices[mFimNome] : hoje.getMonth();
+
+            let mInNome = "";
+            for (const k in mesesIndices) {
+                if (partes[0].includes(k)) { mInNome = k; break; }
+            }
+            mesIn = mInNome ? mesesIndices[mInNome] : mesFim;
+        }
+
+        let anoIn = anoAtual;
+        let anoFim = anoAtual;
+        if (mesIn === 11 && mesFim === 0) {
+            if (hoje.getMonth() === 0) anoIn = anoAtual - 1;
+            else if (hoje.getMonth() === 11) anoFim = anoAtual + 1;
+        }
+
+        const dataInicio = new Date(anoIn, mesIn, diaIn, 0, 0, 0);
+        const dataFim = new Date(anoFim, mesFim, diaFim, 23, 59, 59);
+
+        if (hoje >= dataInicio && hoje <= dataFim) {
+            return i;
+        }
+    }
+    return 0;
+}
+
+function atualizarTela() {
+    if (bancoDeDados.length === 0) return;
+
+    const dadosDaSemana = bancoDeDados[indiceAtual];
+
+    document.querySelectorAll('.semana-card').forEach((card, idx) => {
+        if (idx === indiceAtual) {
+            card.classList.add('ativa');
+        } else {
+            card.classList.remove('ativa');
+        }
+    });
+
+    idsCampos.forEach(id => {
+        const elemento = document.getElementById(`txt-${id}`);
+        const nome = dadosDaSemana[id];
+
+        if (nome && nome.trim() !== "") {
+            elemento.innerText = nome;
+            elemento.classList.remove('vazio');
+        } else {
+            elemento.innerText = "Não designado";
+            elemento.classList.add('vazio');
+        }
+    });
+}
+
+function mudarSemana(novoIndice) {
+    if (novoIndice >= 0 && novoIndice < bancoDeDados.length) {
+        indiceAtual = novoIndice;
+        atualizarTela();
+    }
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(err => {
+        console.log('Service Worker falhou:', err);
+    });
+}
+
+// 🔥 INICIALIZAÇÃO OTIMIZADA
+window.onload = function() {
+    const cacheLocal = localStorage.getItem('escala_cache');
+    
+    // Se existir cache, renderiza a tela com ele imediatamente!
+    if (cacheLocal) {
+        try {
+            bancoDeDados = JSON.parse(cacheLocal);
+            indiceAtual = encontrarIndiceSemanaAtual();
+            construirCarrosselSemanas();
+            atualizarTela();
+        } catch (e) {
+            console.error("Erro ao ler cache:", e);
+        }
+    }
+    
+    // Busca dados frescos da planilha em background
+    carregarDadosDaPlanilha();
+};
+
+    </script>
+</body>
+</html>
