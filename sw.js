@@ -1,9 +1,9 @@
 const CACHE_NAME = 'designa-v1';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/manifest.json',
-    '/1000322334.png'
+    './',
+    'index.html',
+    'manifest.json',
+    '1000322334.png'
 ];
 
 // Instalar o Service Worker e fazer cache dos arquivos
@@ -35,10 +35,38 @@ self.addEventListener('activate', event => {
     self.clients.claim();
 });
 
-// Estratégia: Tenta rede primeiro, fallback para cache
+// Estratégia: tenta rede primeiro, fallback para cache; para navegations retorna index.html do cache
 self.addEventListener('fetch', event => {
     // Ignora requisições que não são GET
     if (event.request.method !== 'GET') {
+        return;
+    }
+
+    // Para requisições de navegação (SPA routes), atende com index.html do cache quando offline
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    if (!response || response.status !== 200 || response.type === 'error') {
+                        return response;
+                    }
+
+                    const responseToCache = response.clone();
+                    caches.open(CACHE_NAME)
+                        .then(cache => {
+                            cache.put(event.request, responseToCache);
+                        });
+
+                    return response;
+                })
+                .catch(() => {
+                    return caches.match('index.html').then(resp => resp || new Response('Offline - conteúdo não disponível', {
+                        status: 503,
+                        statusText: 'Service Unavailable',
+                        headers: new Headers({ 'Content-Type': 'text/plain' })
+                    }));
+                })
+        );
         return;
     }
 
