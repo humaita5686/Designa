@@ -2,7 +2,7 @@
   "name": "Designação de Funções",
   "short_name": "Designa",
   "description": "Designação de Funções - Salão do Reino",
-  "start_url": "./index.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "theme_color": "#08394E",
