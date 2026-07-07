@@ -1,4 +1,4 @@
-const CACHE_NAME = 'designa-v1.2';
+const CACHE_NAME = 'designa-v1.3';
 const urlsToCache = [
     './',
     'index.html',
