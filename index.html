@@ -161,8 +161,8 @@
             display: flex;
             flex-direction: column;
             overflow-y: auto;
-            /* FIX: Faz com que cada página grude perfeitamente no início do container */
-            scroll-snap-align: start; 
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
         }
 
         /* --- CONTEÚDO INFERIOR (FUNDO CLARO) --- */
@@ -188,7 +188,7 @@
             background-color: var(--card-white);
             border-radius: 30px;
             padding: 18px 17px;
-            box-shadow: 08px 10px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -197,7 +197,6 @@
             position: relative;
             overflow: hidden;
             transition: transform 0.2s ease;
-           
         }
 
         .card-funcao:hover {
@@ -235,7 +234,7 @@
             gap: 8px;
         }
 
-        .nomes-container.em-linha #txt-v2::before {
+        .nomes-container.em-linha [data-field="v2"]::before {
             content: "/";
             margin-right: 8px;
             color: var(--text-muted);
@@ -259,8 +258,7 @@
     </style>
 </head>
 <body>
-    
-    <!-- HEADER ÚNICO E GLOBAL NO TOPO -->
+     <!-- HEADER ÚNICO E GLOBAL NO TOPO -->
     <header class="app-header">
         <div class="header-content">
             <h1 class="titulo-principal" id="app-titulo">Designação Semanal</h1>
@@ -270,128 +268,68 @@
         </div>
     </header>
 
+    <!-- CONTAINER DO CARROSSEL DE PÁGINAS INFINITO -->
     <div class="app-carousel-viewport">
         
-        <!-- PÁGINA 1: DESIGNAÇÃO MEIO DE SEMANA -->
-        <div class="app-page-slide" id="view-meio-semana">
+        <!-- PÁGINA 0: FIM DE SEMANA (SEMANA ANTERIOR) -->
+        <div class="app-page-slide" id="slide-prev-weekend">
             <main class="bottom-sheet">
                 <div class="cards-list">
-                    
-                    <div class="card-funcao">
-                        <div class="barra-lateral" style="background-color: var(--primary-accent);"></div>
-                        <span class="funcao-titulo">🎼 ÁUDIO E VIDEO</span>
-                        <div class="nomes-container">
-                            <div class="nome-irmao" id="txt-audio">•••</div>
-                        </div>
-                    </div>
-
-                    <div class="card-funcao">
-                        <div class="barra-lateral" style="background-color: #4F46E5;"></div>
-                        <span class="funcao-titulo">🎙️ PALCO</span>
-                        <div class="nomes-container">
-                            <div class="nome-irmao" id="txt-palco">•••</div>
-                        </div>
-                    </div>
-
-                    <div class="card-funcao">
-                        <div class="barra-lateral" style="background-color: #0D9488;"></div>
-                        <span class="funcao-titulo">🎤 MICROFONE VOLANTE</span>
-                        <div class="nomes-container em-linha">
-                            <div class="nome-irmao" id="txt-v1">•••</div>
-                            <div class="nome-irmao" id="txt-v2">•••</div>
-                        </div>
-                    </div>
-
-                    <div class="card-funcao">
-                        <div class="barra-lateral" style="background-color: #DC2626;"></div>
-                        <span class="funcao-titulo">👉🏽 INDICADOR INTERNO</span>
-                        <div class="nomes-container">
-                            <div class="nome-irmao" id="txt-ind-interno">•••</div>
-                        </div>
-                    </div>
-
-                    <div class="card-funcao">
-                        <div class="barra-lateral" style="background-color: #16A34A;"></div>
-                        <span class="funcao-titulo">🚪 INDICADOR EXTERNO</span>
-                        <div class="nomes-container">
-                            <div class="nome-irmao" id="txt-ind-externo">•••</div>
-                        </div>
-                    </div>
-
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #333333;"></div><span class="funcao-titulo">👔 PRESIDENTE</span><div class="nomes-container"><div class="nome-irmao" data-field="presidente">•••</div></div></div>
+                    <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;"><div class="barra-lateral" style="background: #0D9488;"></div><span class="funcao-titulo" style="padding: 0px 15px">🎙️ DISCURSO PÚBLICO</span><div style="display: flex; gap: 25px; width: 100%;"><div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;"><span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📝 ESBOÇO:</span><div class="nome-irmao" data-field="esboco" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div></div><div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;"><span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🎶 CÂNTICO:</span><div class="nome-irmao" data-field="cantico" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div></div></div><div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div><div style="display: flex; flex-direction: column; gap: 2px; width: 100%;"><span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📖 TEMA</span><div class="nome-irmao" data-field="tema" style="text-align: left; font-size: 22px; padding: 0px 17px; font-weight: 500; line-height: 1.3;">•••</div></div><div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div><div style="display: flex; gap: 16px; width: 100%;"><div style="display: flex; flex-direction: column; gap: 2px; flex: 1;"><span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🗣️ ORADOR</span><div class="nome-irmao" data-field="orador" style="text-align: left; font-weight: 500; padding: 0px 17px; font-size: 19px;">•••</div></div><div style="display: flex; flex-direction: column; gap: 2px; flex: 1;"><span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🏠 CONGREGAÇÃO</span><div class="nome-irmao" data-field="congregacao" style="text-align: left; font-weight: 400; font-size: 19px;">•••</div></div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #DD33AA;"></div><span class="funcao-titulo">📖 LEITOR A SENTINELA</span><div class="nomes-container"><div class="nome-irmao" data-field="leitor">•••</div></div></div>
                 </div>
             </main>
         </div>
 
-        <!-- PÁGINA 2: REUNIÃO FIM DE SEMANA -->
-        <div class="app-page-slide" id="view-fim-semana">
+        <!-- PÁGINA 1: MEIO DE SEMANA (ATUAL) -->
+        <div class="app-page-slide" id="slide-curr-midweek">
             <main class="bottom-sheet">
                 <div class="cards-list">
-                    
-                    <div class="card-funcao">
-                        <div class="barra-lateral" style="background-color: #333333;"></div>
-                        <span class="funcao-titulo">👔 PRESIDENTE</span>
-                        <div class="nomes-container">
-                            <div class="nome-irmao" id="txt-presidente">•••</div>
-                        </div>
-                    </div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: var(--primary-accent);"></div><span class="funcao-titulo">🎼 ÁUDIO E VIDEO</span><div class="nomes-container"><div class="nome-irmao" data-field="audio">•••</div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #4F46E5;"></div><span class="funcao-titulo">🎙️ PALCO</span><div class="nomes-container"><div class="nome-irmao" data-field="palco">•••</div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #0D9488;"></div><span class="funcao-titulo">🎤 MICROFONE VOLANTE</span><div class="nomes-container em-linha"><div class="nome-irmao" data-field="v1">•••</div><div class="nome-irmao" data-field="v2">•••</div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #DC2626;"></div><span class="funcao-titulo">👉🏽 INDICADOR INTERNO</span><div class="nomes-container"><div class="nome-irmao" data-field="ind-interno">•••</div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #16A34A;"></div><span class="funcao-titulo">🚪 INDICADOR EXTERNO</span><div class="nomes-container"><div class="nome-irmao" data-field="ind-externo">•••</div></div></div>
+                </div>
+            </main>
+        </div>
 
-                    <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;">
-                        <div class="barra-lateral" style="background: #0D9488;"></div>
-                        <span class="funcao-titulo" style="padding: 0px 15px" >🎙️ DISCURSO PÚBLICO</span>
-                        
-                        <div style="display: flex; gap: 25px; width: 100%;">
-                            <div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;">
-                                <span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📝 ESBOÇO:</span>
-                                <div class="nome-irmao" id="txt-esboco" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div>
-                            </div>
-                            <div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;">
-                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🎶 CÂNTICO:</span>
-                                <div class="nome-irmao" id="txt-cantico" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div>
-                            </div>
-                        </div>
+        <!-- PÁGINA 2: FIM DE SEMANA (ATUAL) -->
+        <div class="app-page-slide" id="slide-curr-weekend">
+            <main class="bottom-sheet">
+                <div class="cards-list">
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #333333;"></div><span class="funcao-titulo">👔 PRESIDENTE</span><div class="nomes-container"><div class="nome-irmao" data-field="presidente">•••</div></div></div>
+                    <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;"><div class="barra-lateral" style="background: #0D9488;"></div><span class="funcao-titulo" style="padding: 0px 15px">🎙️ DISCURSO PÚBLICO</span><div style="display: flex; gap: 25px; width: 100%;"><div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;"><span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📝 ESBOÇO:</span><div class="nome-irmao" data-field="esboco" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div></div><div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;"><span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🎶 CÂNTICO:</span><div class="nome-irmao" data-field="cantico" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div></div></div><div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div><div style="display: flex; flex-direction: column; gap: 2px; width: 100%;"><span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📖 TEMA</span><div class="nome-irmao" data-field="tema" style="text-align: left; font-size: 22px; padding: 0px 17px; font-weight: 500; line-height: 1.3;">•••</div></div><div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div><div style="display: flex; gap: 16px; width: 100%;"><div style="display: flex; flex-direction: column; gap: 2px; flex: 1;"><span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🗣️ ORADOR</span><div class="nome-irmao" data-field="orador" style="text-align: left; font-weight: 500; padding: 0px 17px; font-size: 19px;">•••</div></div><div style="display: flex; flex-direction: column; gap: 2px; flex: 1;"><span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🏠 CONGREGAÇÃO</span><div class="nome-irmao" data-field="congregacao" style="text-align: left; font-weight: 400; font-size: 19px;">•••</div></div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #DD33AA;"></div><span class="funcao-titulo">📖 LEITOR A SENTINELA</span><div class="nomes-container"><div class="nome-irmao" data-field="leitor">•••</div></div></div>
+                </div>
+            </main>
+        </div>
 
-                        <div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div>
-
-                        <div style="display: flex; flex-direction: column; gap: 2px; width: 100%;">
-                            <span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📖 TEMA</span>
-                            <div class="nome-irmao" id="txt-tema" style="text-align: left; font-size: 22px; padding: 0px 17px; font-weight: 500; line-height: 1.3;">•••</div>
-                        </div>
-
-                        <div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div>
-
-                        <div style="display: flex; gap: 16px; width: 100%;">
-                            <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
-                                <span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🗣️ ORADOR</span>
-                                <div class="nome-irmao" id="txt-orador" style="text-align: left; font-weight: 500; padding: 0px 17px; font-size: 19px;">•••</div>
-                            </div>
-                            <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
-                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🏠 CONGREGAÇÃO</span>
-                                <div class="nome-irmao" id="txt-congregacao" style="text-align: left; font-weight: 400; font-size: 19px;">•••</div>
-                            </div>        
-                        </div>
-                    </div>
-
-                    <div class="card-funcao">
-                        <div class="barra-lateral" style="background-color: #DD33AA;"></div>
-                        <span class="funcao-titulo">📖 LEITOR A SENTINELA</span>
-                        <div class="nomes-container">
-                            <div class="nome-irmao" id="txt-leitor">•••</div>
-                        </div>
-                    </div>
-
+        <!-- PÁGINA 3: MEIO DE SEMANA (PRÓXIMA SEMANA) -->
+        <div class="app-page-slide" id="slide-next-midweek">
+            <main class="bottom-sheet">
+                <div class="cards-list">
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: var(--primary-accent);"></div><span class="funcao-titulo">🎼 ÁUDIO E VIDEO</span><div class="nomes-container"><div class="nome-irmao" data-field="audio">•••</div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #4F46E5;"></div><span class="funcao-titulo">🎙️ PALCO</span><div class="nomes-container"><div class="nome-irmao" data-field="palco">•••</div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #0D9488;"></div><span class="funcao-titulo">🎤 MICROFONE VOLANTE</span><div class="nomes-container em-linha"><div class="nome-irmao" data-field="v1">•••</div><div class="nome-irmao" data-field="v2">•••</div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #DC2626;"></div><span class="funcao-titulo">👉🏽 INDICADOR INTERNO</span><div class="nomes-container"><div class="nome-irmao" data-field="ind-interno">•••</div></div></div>
+                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #16A34A;"></div><span class="funcao-titulo">🚪 INDICADOR EXTERNO</span><div class="nomes-container"><div class="nome-irmao" data-field="ind-externo">•••</div></div></div>
                 </div>
             </main>
         </div>
 
     </div>
-<script>
+
+    <script>
         const URL_PLANILHA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSBuS_Qe2LkVH7QEPbSvoFn50e7I71Waljbuk8b2UR1wxGkYZMoeEZUy7Moy1DF4pMfRlRsn0tyNDu4/pub?output=csv";
+        const URL_TEMAS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRGAcOIMZpt2HD2XMZWqEnV5QjF7322mxVRjI-s3hsGsSzAw6T45pGhCczn0tNzQUQeYcnQ4R3SCyAS/pub?gid=1453510933&single=true&output=tsv";
 
         let bancoDeDados = [];
         let indiceAtual = 0;
-        const idsCampos = ['audio', 'palco', 'v1', 'v2', 'ind-interno', 'ind-externo', 'presidente', 'esboco', 'cantico', 'tema', 'orador', 'congregacao', 'leitor'];
-        const URL_TEMAS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRGAcOIMZpt2HD2XMZWqEnV5QjF7322mxVRjI-s3hsGsSzAw6T45pGhCczn0tNzQUQeYcnQ4R3SCyAS/pub?gid=1453510933&single=true&output=tsv";
         let BANCO_TEMAS = {};
+        
+        const idsCampos = ['audio', 'palco', 'v1', 'v2', 'ind-interno', 'ind-externo', 'presidente', 'esboco', 'cantico', 'tema', 'orador', 'congregacao', 'leitor'];
 
         async function carregarTemasOnline() {
             try {
@@ -400,7 +338,7 @@
                 const linhas = textoTSV.split(/\r?\n/);
                 
                 linhas.forEach(linha => {
-                    const colunas = linha.split('\t');
+                    const colunas = inlinesplit = linha.split('\t');
                     if (colunas.length >= 2) {
                         const numero = colunas[0].replace(/\D/g, '').trim();
                         const tema = colunas[1].trim();
@@ -467,6 +405,9 @@
                 indiceAtual = encontrarIndiceSemanaAtual();
                 construirCarrosselSemanas();
                 atualizarTela();
+                
+                // Posiciona o viewport inicialmente no slide 1 (Meio da semana atual)
+                setTimeout(resetarPosicaoScrollParaCentro, 200);
 
             } catch (erro) {
                 console.error(erro);
@@ -529,7 +470,7 @@
         function construirCarrosselSemanas() {
             const containers = document.querySelectorAll('.carousel-semanas');
             
-            containers.forEach((container, containerIdx) => {
+            containers.forEach((container) => {
                 container.innerHTML = '';
 
                 bancoDeDados.forEach((dados, i) => {
@@ -537,7 +478,7 @@
 
                     const card = document.createElement('div');
                     card.className = `semana-card ${i === indiceAtual ? 'ativa' : ''}`;
-                    card.id = `card-sem-${containerIdx}-${i}`;
+                    card.id = `card-sem-${i}`;
                     card.setAttribute('data-index', i);
                     card.onclick = () => mudarSemana(i);
 
@@ -555,13 +496,10 @@
         }
 
         function centralizarCardAtivo() {
-            const containers = document.querySelectorAll('.carousel-semanas');
-            containers.forEach((container, containerIdx) => {
-                const cardAtivo = document.getElementById(`card-sem-${containerIdx}-${indiceAtual}`);
-                if (cardAtivo) {
-                    cardAtivo.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                }
-            });
+            const cardAtivo = document.getElementById(`card-sem-${indiceAtual}`);
+            if (cardAtivo) {
+                cardAtivo.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
         }
 
         function encontrarIndiceSemanaAtual() {
@@ -624,22 +562,17 @@
             return 0;
         }
 
-        function atualizarTela() {
-            if (bancoDeDados.length === 0) return;
+        // NOVO: Alimenta os cards dos 4 slides do carrossel inteligente
+        function preencherDadosDoSlide(idSlide, indexSemana) {
+            const slideContainer = document.getElementById(idSlide);
+            if (!slideContainer || bancoDeDados.length === 0) return;
 
-            const dadosDaSemana = bancoDeDados[indiceAtual];
-
-            document.querySelectorAll('.semana-card').forEach((card) => {
-                const idx = parseInt(card.getAttribute('data-index'));
-                if (idx === indiceAtual) {
-                    card.classList.add('ativa');
-                } else {
-                    card.classList.remove('ativa');
-                }
-            });
+            // Tratamento circular seguro para as pontas infinitas
+            const indexTratado = (indexSemana + bancoDeDados.length) % bancoDeDados.length;
+            const dadosDaSemana = bancoDeDados[indexTratado];
 
             idsCampos.forEach(id => {
-                const elemento = document.getElementById(`txt-${id}`);
+                const elemento = slideContainer.querySelector(`[data-field="${id}"]`);
                 if (!elemento) return;
                 
                 let nome = dadosDaSemana[id];
@@ -665,10 +598,42 @@
             });
         }
 
+        function atualizarTela() {
+            if (bancoDeDados.length === 0) return;
+
+            document.querySelectorAll('.semana-card').forEach((card) => {
+                const idx = parseInt(card.getAttribute('data-index'));
+                if (idx === indiceAtual) {
+                    card.classList.add('ativa');
+                } else {
+                    card.classList.remove('ativa');
+                }
+            });
+
+            // Distribui os dados de forma correta entre as 4 páginas em cache ativo
+            preencherDadosDoSlide('slide-prev-weekend', indiceAtual - 1);
+            preencherDadosDoSlide('slide-curr-midweek', indiceAtual);
+            preencherDadosDoSlide('slide-curr-weekend', indiceAtual);
+            preencherDadosDoSlide('slide-next-midweek', indiceAtual + 1);
+        }
+
+        function resetarPosicaoScrollParaCentro() {
+            const viewport = document.querySelector('.app-carousel-viewport');
+            if (viewport) {
+                viewport.scrollTo({ left: viewport.offsetWidth, behavior: 'auto' });
+            }
+        }
+
         function mudarSemana(novoIndice) {
             if (novoIndice >= 0 && novoIndice < bancoDeDados.length) {
                 indiceAtual = novoIndice;
                 atualizarTela();
+                
+                // Sempre que clicar lá em cima, foca na tela do meio de semana atual (Slide 1)
+                const viewport = document.querySelector('.app-carousel-viewport');
+                if (viewport) {
+                    viewport.scrollTo({ left: viewport.offsetWidth, behavior: 'smooth' });
+                }
                 setTimeout(centralizarCardAtivo, 50);
             }
         }
@@ -688,6 +653,7 @@
                     indiceAtual = encontrarIndiceSemanaAtual();
                     construirCarrosselSemanas();
                     atualizarTela();
+                    setTimeout(resetarPosicaoScrollParaCentro, 50);
                 } catch (e) {
                     console.error("Erro ao ler cache:", e);
                 }
@@ -696,26 +662,54 @@
             carregarTemasOnline();
             carregarDadosDaPlanilha();
         };
-         // MONITOR DE DESLIZE PARA ALTERAR O TÍTULO AUTOMATICAMENTE
-        window.addEventListener('DOMContentLoaded', () => {
-            const viewport = document.querySelector('.app-carousel-viewport');
-            if (viewport) {
-                viewport.addEventListener('scroll', () => {
-                    const width = viewport.offsetWidth;
-                    if (width > 0) {
-                        const paginaReal = Math.round(viewport.scrollLeft / width);
-                        const titulo = document.getElementById('app-titulo');
-                        if (titulo) {
-                            if (paginaReal === 0) {
-                                titulo.innerText = "Designação Semanal";
-                            } else if (paginaReal === 1) {
-                                titulo.innerText = "Reunião Fim de Semana";
-                            }
-                        }
-                    }
-                });
+        // SUBSTITUA TODO O SEU OUVINTE 'DOMContentLoaded' POR ESTE:
+window.addEventListener('DOMContentLoaded', () => {
+    const viewport = document.querySelector('.app-carousel-viewport');
+
+    if (viewport) {
+        // 1. Altera o título EM TEMPO REAL durante o arrasto (super leve)
+        viewport.addEventListener('scroll', () => {
+            const width = viewport.offsetWidth;
+            if (width <= 0) return;
+
+            const scrollPos = viewport.scrollLeft;
+            const paginaReal = Math.round(scrollPos / width);
+            const titulo = document.getElementById('app-titulo');
+            
+            if (titulo) {
+                if (paginaReal === 0 || paginaReal === 2) {
+                    titulo.innerText = "Reunião Fim de Semana";
+                } else if (paginaReal === 1 || paginaReal === 3) {
+                    titulo.innerText = "Designação Semanal";
+                }
             }
         });
+
+                    // 2. Faz o teletransporte APENAS quando a animação de imã parou completamente
+        viewport.addEventListener('scrollend', () => {
+            const width = viewport.offsetWidth;
+            if (width <= 0) return;
+
+            const posicaoFinal = viewport.scrollLeft;
+            const paginaReal = Math.round(posicaoFinal / width);
+            
+            if (paginaReal === 0) {
+                // Chegou na extremidade esquerda (Semana Anterior) -> Teleporta para o espelho na Página 2
+                indiceAtual = (indiceAtual - 1 + bancoDeDados.length) % bancoDeDados.length;
+                atualizarTela();
+                centralizarCardAtivo();
+                viewport.scrollTo({ left: width * 2, behavior: 'auto' });
+            } 
+            else if (paginaReal === 3) {
+                // Chegou na extremidade direita (Próxima Semana) -> Teleporta para o espelho na Página 1
+                indiceAtual = (indiceAtual + 1) % bancoDeDados.length;
+                atualizarTela();
+                centralizarCardAtivo();
+                viewport.scrollTo({ left: width, behavior: 'auto' });
+            }
+        });
+    }
+});
     </script>
 </body>
 </html>
