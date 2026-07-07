@@ -723,5 +723,26 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
     </script>
+    <script>
+    function verificarLembreteSemanal() {
+        const UMA_SEMANA_EM_MS = 7 * 24 * 60 * 60 * 1000; // 7 dias em milissegundos
+        const agora = new Date().getTime();
+        const ultimaData = localStorage.getItem('dataUltimoLembrete');
+
+        // Se nunca recebeu ou se já passaram 7 dias
+        if (!ultimaData || (agora - ultimaData) > UMA_SEMANA_EM_MS) {
+            
+            // Aqui você pode trocar o alert() por um modal bonitinho do seu app
+            alert("Lembrete Semanal: Não esqueça de conferir o Designa hoje!");
+            
+            // Atualiza a data no celular
+            localStorage.setItem('dataUltimoLembrete', agora);
+        }
+    }
+
+    // Chama a função assim que o app abrir
+    verificarLembreteSemanal();
+</script>
+
 </body>
 </html>
