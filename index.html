@@ -256,6 +256,18 @@
             font-style: italic;
         }
     </style>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "9e1ba5be-58e8-414e-be13-fc6b2b3e1fa",
+      notifyButton: {
+        enable: true, // Mostra o sininho de inscrição na tela
+      },
+    });
+  });
+</script>
 </head>
 <body>
      <!-- HEADER ÚNICO E GLOBAL NO TOPO -->
