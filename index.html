@@ -68,7 +68,7 @@
 
         /* Título Principal */
         .titulo-principal {
-            font-size: 34px;
+            font-size: 30px;
             font-weight: 600;
             color: var(--text-light);
             letter-spacing: -0.5px;
@@ -263,7 +263,7 @@
     await OneSignal.init({
       appId: "9e1ba5be-58e8-414e-be13-fc6b2b3e1fa",
       notifyButton: {
-        enable: true, // Mostra o sininho de inscrição na tela
+        enable: true,
       },
     });
   });
@@ -280,22 +280,11 @@
         </div>
     </header>
 
-    <!-- CONTAINER DO CARROSSEL DE PÁGINAS INFINITO -->
+    <!-- CONTAINER DO CARROSSEL DE PÁGINAS (3 SLIDES APENAS) -->
     <div class="app-carousel-viewport">
         
-        <!-- PÁGINA 0: FIM DE SEMANA (SEMANA ANTERIOR) -->
-        <div class="app-page-slide" id="slide-prev-weekend">
-            <main class="bottom-sheet">
-                <div class="cards-list">
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #333333;"></div><span class="funcao-titulo">👔 PRESIDENTE</span><div class="nomes-container"><div class="nome-irmao" data-field="presidente">•••</div></div></div>
-                    <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;"><div class="barra-lateral" style="background: #0D9488;"></div><span class="funcao-titulo" style="padding: 0px 15px">🎙️ DISCURSO PÚBLICO</span><div style="display: flex; gap: 25px; width: 100%;"><div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;"><span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📝 ESBOÇO:</span><div class="nome-irmao" data-field="esboco" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div></div><div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;"><span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🎶 CÂNTICO:</span><div class="nome-irmao" data-field="cantico" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div></div></div><div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div><div style="display: flex; flex-direction: column; gap: 2px; width: 100%;"><span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📖 TEMA</span><div class="nome-irmao" data-field="tema" style="text-align: left; font-size: 22px; padding: 0px 17px; font-weight: 500; line-height: 1.3;">•••</div></div><div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div><div style="display: flex; gap: 16px; width: 100%;"><div style="display: flex; flex-direction: column; gap: 2px; flex: 1;"><span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🗣️ ORADOR</span><div class="nome-irmao" data-field="orador" style="text-align: left; font-weight: 500; padding: 0px 17px; font-size: 19px;">•••</div></div><div style="display: flex; flex-direction: column; gap: 2px; flex: 1;"><span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🏠 CONGREGAÇÃO</span><div class="nome-irmao" data-field="congregacao" style="text-align: left; font-weight: 400; font-size: 19px;">•••</div></div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #DD33AA;"></div><span class="funcao-titulo">📖 LEITOR A SENTINELA</span><div class="nomes-container"><div class="nome-irmao" data-field="leitor">•••</div></div></div>
-                </div>
-            </main>
-        </div>
-
         <!-- PÁGINA 1: MEIO DE SEMANA (ATUAL) -->
-        <div class="app-page-slide" id="slide-curr-midweek">
+        <div class="app-page-slide" id="slide-midweek">
             <main class="bottom-sheet">
                 <div class="cards-list">
                     <div class="card-funcao"><div class="barra-lateral" style="background-color: var(--primary-accent);"></div><span class="funcao-titulo">🎼 ÁUDIO E VIDEO</span><div class="nomes-container"><div class="nome-irmao" data-field="audio">•••</div></div></div>
@@ -308,7 +297,7 @@
         </div>
 
         <!-- PÁGINA 2: FIM DE SEMANA (ATUAL) -->
-        <div class="app-page-slide" id="slide-curr-weekend">
+        <div class="app-page-slide" id="slide-weekend">
             <main class="bottom-sheet">
                 <div class="cards-list">
                     <div class="card-funcao"><div class="barra-lateral" style="background-color: #333333;"></div><span class="funcao-titulo">👔 PRESIDENTE</span><div class="nomes-container"><div class="nome-irmao" data-field="presidente">•••</div></div></div>
@@ -318,15 +307,66 @@
             </main>
         </div>
 
-        <!-- PÁGINA 3: MEIO DE SEMANA (PRÓXIMA SEMANA) -->
-        <div class="app-page-slide" id="slide-next-midweek">
+        <!-- PÁGINA 3: CAMPO E LIMPEZA (ATUAL) -->
+        <div class="app-page-slide" id="slide-campo">
             <main class="bottom-sheet">
                 <div class="cards-list">
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: var(--primary-accent);"></div><span class="funcao-titulo">🎼 ÁUDIO E VIDEO</span><div class="nomes-container"><div class="nome-irmao" data-field="audio">•••</div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #4F46E5;"></div><span class="funcao-titulo">🎙️ PALCO</span><div class="nomes-container"><div class="nome-irmao" data-field="palco">•••</div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #0D9488;"></div><span class="funcao-titulo">🎤 MICROFONE VOLANTE</span><div class="nomes-container em-linha"><div class="nome-irmao" data-field="v1">•••</div><div class="nome-irmao" data-field="v2">•••</div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #DC2626;"></div><span class="funcao-titulo">👉🏽 INDICADOR INTERNO</span><div class="nomes-container"><div class="nome-irmao" data-field="ind-interno">•••</div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #16A34A;"></div><span class="funcao-titulo">🚪 INDICADOR EXTERNO</span><div class="nomes-container"><div class="nome-irmao" data-field="ind-externo">•••</div></div></div>
+                    <!-- Card 1: Sábado -->
+                    <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;">
+                        <div class="barra-lateral" style="background: #0F766E;"></div>
+                        <span class="funcao-titulo" style="padding: 0px 15px">👜 SÁBADO</span>
+                        <div style="display: flex; gap: 25px; width: 100%;">
+                            <!-- Dirigente empilhado na esquerda (com destaque e recuo original) -->
+                            <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
+                                <span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">👔 DIRIGENTE</span>
+                                <div class="nome-irmao" data-field="sabado-dirigente" style="text-align: left; font-size: 20px; padding: 0px 0px 0px 17px; font-weight: 500; line-height: 1.3;">•••</div>
+                            </div>
+                            <!-- Local empilhado na direita -->
+                            <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
+                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🏠 LOCAL</span>
+                                <div class="nome-irmao" data-field="sabado-local" style="text-align: left; font-weight: 500; font-size: 20px;">•••</div>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div>
+                        <!-- Horário centralizado na base do card -->
+                        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 8px; width: 100%;">
+                            <span style="font-size: 18px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px; white-space: nowrap;">⏰ HORÁRIO:</span>
+                            <div class="nome-irmao" data-field="sabado-horario" style="font-size: 25px; font-weight: 700; white-space: nowrap; padding-bottom: 2px;">•••</div>
+                        </div>
+                    </div>
+
+                     <!-- Card 2: Domingo -->
+                    <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;">
+                        <div class="barra-lateral" style="background: #1D4ED8;"></div>
+                        <span class="funcao-titulo" style="padding: 0px 15px">💼 DOMINGO</span>
+                        <div style="display: flex; gap: 25px; width: 100%;">
+                            <!-- Dirigente empilhado na esquerda (com destaque e recuo original) -->
+                            <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
+                                <span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">👔 DIRIGENTE</span>
+                                <div class="nome-irmao" data-field="domingo-dirigente" style="text-align: left; font-size: 20px; padding: 0px 0px 0px 17px; font-weight: 500; line-height: 1.3;">•••</div>
+                            </div>
+                            <!-- Local empilhado na direita -->
+                            <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
+                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🏠 LOCAL</span>
+                                <div class="nome-irmao" data-field="domingo-local" style="text-align: left; font-weight: 500; font-size: 20px;">•••</div>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div>
+                        <!-- Horário centralizado na base do card -->
+                        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 8px; width: 100%;">
+                            <span style="font-size: 18px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px; white-space: nowrap;">⏰ HORÁRIO:</span>
+                            <div class="nome-irmao" data-field="domingo-horario" style="font-size: 25px; font-weight: 700; white-space: nowrap; padding-bottom: 2px;">•••</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Limpeza semanal -->
+                    <div class="card-funcao">
+                        <div class="barra-lateral" style="background-color: #B45309;"></div>
+                        <span class="funcao-titulo">🧹 LIMPEZA SEMANAL</span>
+                        <div class="nomes-container">
+                            <div class="nome-irmao" data-field="limpeza">•••</div>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
@@ -341,7 +381,13 @@
         let indiceAtual = 0;
         let BANCO_TEMAS = {};
         
-        const idsCampos = ['audio', 'palco', 'v1', 'v2', 'ind-interno', 'ind-externo', 'presidente', 'leitor', 'orador', 'esboco', 'cantico', 'congregacao', 'tema'];
+        // Mapeamento de todas as chaves de campos
+        const idsCampos = [
+            'audio', 'palco', 'v1', 'v2', 'ind-interno', 'ind-externo', 
+            'presidente', 'leitor', 'orador', 'esboco', 'cantico', 'congregacao', 'tema',
+            'sabado-horario', 'sabado-local', 'sabado-dirigente',
+            'domingo-horario', 'domingo-local', 'domingo-dirigente', 'limpeza'
+        ];
 
         async function carregarTemasOnline() {
             try {
@@ -350,7 +396,7 @@
                 const linhas = textoTSV.split(/\r?\n/);
                 
                 linhas.forEach(linha => {
-                    const colunas = inlinesplit = linha.split('\t');
+                    const colunas = inlineSplitTSV(linha);
                     if (colunas.length >= 2) {
                         const numero = colunas[0].replace(/\D/g, '').trim();
                         const tema = colunas[1].trim();
@@ -363,6 +409,10 @@
             } catch (erro) {
                 console.error("Erro ao buscar banco de temas online:", erro);
             }
+        }
+
+        function inlineSplitTSV(linha) {
+            return linha.split('\t');
         }
 
         const mesesMap = {
@@ -417,9 +467,6 @@
                 indiceAtual = encontrarIndiceSemanaAtual();
                 construirCarrosselSemanas();
                 atualizarTela();
-                
-                // Posiciona o viewport inicialmente no slide 1 (Meio da semana atual)
-                setTimeout(resetarPosicaoScrollParaCentro, 200);
 
             } catch (erro) {
                 console.error(erro);
@@ -574,12 +621,10 @@
             return 0;
         }
 
-        // NOVO: Alimenta os cards dos 4 slides do carrossel inteligente
         function preencherDadosDoSlide(idSlide, indexSemana) {
             const slideContainer = document.getElementById(idSlide);
             if (!slideContainer || bancoDeDados.length === 0) return;
 
-            // Tratamento circular seguro para as pontas infinitas
             const indexTratado = (indexSemana + bancoDeDados.length) % bancoDeDados.length;
             const dadosDaSemana = bancoDeDados[indexTratado];
 
@@ -622,30 +667,15 @@
                 }
             });
 
-            // Distribui os dados de forma correta entre as 4 páginas em cache ativo
-            preencherDadosDoSlide('slide-prev-weekend', indiceAtual - 1);
-            preencherDadosDoSlide('slide-curr-midweek', indiceAtual);
-            preencherDadosDoSlide('slide-curr-weekend', indiceAtual);
-            preencherDadosDoSlide('slide-next-midweek', indiceAtual + 1);
-        }
-
-        function resetarPosicaoScrollParaCentro() {
-            const viewport = document.querySelector('.app-carousel-viewport');
-            if (viewport) {
-                viewport.scrollTo({ left: viewport.offsetWidth, behavior: 'auto' });
-            }
+            preencherDadosDoSlide('slide-midweek', indiceAtual);
+            preencherDadosDoSlide('slide-weekend', indiceAtual);
+            preencherDadosDoSlide('slide-campo', indiceAtual);
         }
 
         function mudarSemana(novoIndice) {
             if (novoIndice >= 0 && novoIndice < bancoDeDados.length) {
                 indiceAtual = novoIndice;
                 atualizarTela();
-                
-                // Sempre que clicar lá em cima, foca na tela do meio de semana atual (Slide 1)
-                const viewport = document.querySelector('.app-carousel-viewport');
-                if (viewport) {
-                    viewport.scrollTo({ left: viewport.offsetWidth, behavior: 'smooth' });
-                }
                 setTimeout(centralizarCardAtivo, 50);
             }
         }
@@ -665,7 +695,6 @@
                     indiceAtual = encontrarIndiceSemanaAtual();
                     construirCarrosselSemanas();
                     atualizarTela();
-                    setTimeout(resetarPosicaoScrollParaCentro, 50);
                 } catch (e) {
                     console.error("Erro ao ler cache:", e);
                 }
@@ -674,73 +703,43 @@
             carregarTemasOnline();
             carregarDadosDaPlanilha();
         };
-        // SUBSTITUA TODO O SEU OUVINTE 'DOMContentLoaded' POR ESTE:
-window.addEventListener('DOMContentLoaded', () => {
-    const viewport = document.querySelector('.app-carousel-viewport');
 
-    if (viewport) {
-        // 1. Altera o título EM TEMPO REAL durante o arrasto (super leve)
-        viewport.addEventListener('scroll', () => {
-            const width = viewport.offsetWidth;
-            if (width <= 0) return;
+        window.addEventListener('DOMContentLoaded', () => {
+            const viewport = document.querySelector('.app-carousel-viewport');
 
-            const scrollPos = viewport.scrollLeft;
-            const paginaReal = Math.round(scrollPos / width);
-            const titulo = document.getElementById('app-titulo');
-            
-            if (titulo) {
-                if (paginaReal === 0 || paginaReal === 2) {
-                    titulo.innerText = "Reunião Fim de Semana";
-                } else if (paginaReal === 1 || paginaReal === 3) {
-                    titulo.innerText = "Designação Semanal";
-                }
+            if (viewport) {
+                viewport.addEventListener('scroll', () => {
+                    const width = viewport.offsetWidth;
+                    if (width <= 0) return;
+
+                    const scrollPos = viewport.scrollLeft;
+                    const paginaReal = Math.round(scrollPos / width);
+                    const titulo = document.getElementById('app-titulo');
+                    
+                    if (titulo) {
+                        if (paginaReal === 0) {
+                            titulo.innerText = "Designação Semanal";
+                        } else if (paginaReal === 1) {
+                            titulo.innerText = "Reunião Fim de Semana";
+                        } else if (paginaReal === 2) {
+                            titulo.innerText = "Serviço de Campo e Limpeza";
+                        }
+                    }
+                });
             }
         });
-
-                    // 2. Faz o teletransporte APENAS quando a animação de imã parou completamente
-        viewport.addEventListener('scrollend', () => {
-            const width = viewport.offsetWidth;
-            if (width <= 0) return;
-
-            const posicaoFinal = viewport.scrollLeft;
-            const paginaReal = Math.round(posicaoFinal / width);
-            
-            if (paginaReal === 0) {
-                // Chegou na extremidade esquerda (Semana Anterior) -> Teleporta para o espelho na Página 2
-                indiceAtual = (indiceAtual - 1 + bancoDeDados.length) % bancoDeDados.length;
-                atualizarTela();
-                centralizarCardAtivo();
-                viewport.scrollTo({ left: width * 2, behavior: 'auto' });
-            } 
-            else if (paginaReal === 3) {
-                // Chegou na extremidade direita (Próxima Semana) -> Teleporta para o espelho na Página 1
-                indiceAtual = (indiceAtual + 1) % bancoDeDados.length;
-                atualizarTela();
-                centralizarCardAtivo();
-                viewport.scrollTo({ left: width, behavior: 'auto' });
-            }
-        });
-    }
-});
     </script>
     <script>
     function verificarLembreteSemanal() {
-        const UMA_SEMANA_EM_MS = 7 * 24 * 60 * 60 * 1000; // 7 dias em milissegundos
+        const UMA_SEMANA_EM_MS = 7 * 24 * 60 * 60 * 1000;
         const agora = new Date().getTime();
         const ultimaData = localStorage.getItem('dataUltimoLembrete');
 
-        // Se nunca recebeu ou se já passaram 7 dias
         if (!ultimaData || (agora - ultimaData) > UMA_SEMANA_EM_MS) {
-            
-            // Aqui você pode trocar o alert() por um modal bonitinho do seu app
             alert("Lembrete Semanal: Não esqueça de conferir o Designa hoje!");
-            
-            // Atualiza a data no celular
             localStorage.setItem('dataUltimoLembrete', agora);
         }
     }
-
-    // Chama a função assim que o app abrir
     verificarLembreteSemanal();
 </script>
 
