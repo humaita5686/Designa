@@ -20,7 +20,7 @@
         :root {
             --bg-main: #08394E;
             --bg-header: #08394E;
-            --primary-accent: #FFB700;
+            --primary-accent: #444444;
             --text-light: #FFFFFF; 
             --text-muted: #0D6E73;
             --bg-bottom-sheet: #EEEEEE;
@@ -169,7 +169,7 @@
         .bottom-sheet {
             background-color: var(--bg-bottom-sheet);
             border-radius: 30px 30px 0 0;
-            padding: 24px 13px 40px 13px;
+            padding: 24px 13px 105px 13px; /* Aumentado de 40px para 105px para liberar espaço para a barra flutuante */
             flex-grow: 1;
             width: 100%;
             display: flex;
@@ -255,6 +255,64 @@
             font-weight: 400;
             font-style: italic;
         }
+
+        /* --- BARRA DE NAVEGAÇÃO FLUTUANTE (PÍLULA MINIMALISTA COM SVG) --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(250, 250, 250, 0.7); /* Super translúcido */
+    backdrop-filter: blur(8px); /* Efeito de vidro fosco bem visível */
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 30px;
+    padding: 6px 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 45%; /* Estreito e minimalista */
+    max-width: 250px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(55, 55, 55, 0.15);
+    z-index: 2000;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 7px;
+    border-radius: 50%;
+    flex: 1;
+    color: rgba(8, 57, 78, 0.8); /* Cor padrão do ícone inativo */
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item .nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.25s ease;
+}
+
+.nav-item .nav-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Estilo da aba ativa */
+.nav-item.ativo {
+    color: var(--primary-accent); /* Transiciona para o dourado #FFB700 */
+}
+
+.nav-item.ativo .nav-icon {
+    transform: scale(1.2); /* Destaque sutil de tamanho */
+}
+
     </style>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
@@ -373,6 +431,45 @@
 
     </div>
 
+               <!-- BARRA DE NAVEGAÇÃO FLUTUANTE (ESTILO PÍLULA MINIMALISTA COM NOVA BÍBLIA 3D) -->
+    <nav class="bottom-nav">
+        <!-- Slide 0: Meio de Semana (Calendário) -->
+        <div class="nav-item ativo" onclick="navegarParaSlide(0)">
+            <span class="nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+            </span>
+        </div>
+
+       <!-- Slide 1: Fim de Semana (Bíblia com Base Reta) -->
+<div class="nav-item" onclick="navegarParaSlide(1)">
+    <span class="nav-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14H22z"></path>
+        </svg>
+    </span>
+</div>
+
+
+        <!-- Slide 2: Serviço de Campo (Pasta / Pasta de Trabalho) -->
+        <div class="nav-item" onclick="navegarParaSlide(2)">
+            <span class="nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+            </span>
+        </div>
+    </nav>
+
+
+
+
     <script>
         const URL_PLANILHA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSBuS_Qe2LkVH7QEPbSvoFn50e7I71Waljbuk8b2UR1wxGkYZMoeEZUy7Moy1DF4pMfRlRsn0tyNDu4/pub?output=csv";
         const URL_TEMAS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRGAcOIMZpt2HD2XMZWqEnV5QjF7322mxVRjI-s3hsGsSzAw6T45pGhCczn0tNzQUQeYcnQ4R3SCyAS/pub?gid=1453510933&single=true&output=tsv";
@@ -412,6 +509,10 @@
         }
 
         function inlineSplitTSV(linha) {
+            return inlineSplitTSV_impl(linha);
+        }
+        
+        function inlineSplitTSV_impl(linha) {
             return linha.split('\t');
         }
 
@@ -679,6 +780,29 @@
                 setTimeout(centralizarCardAtivo, 50);
             }
         }
+        /* --- FUNÇÕES DE NAVEGAÇÃO ENTRE SLIDES --- */
+        function navegarParaSlide(index) {
+            const viewport = document.querySelector('.app-carousel-viewport');
+            if (viewport) {
+                const width = viewport.offsetWidth;
+                viewport.scrollTo({
+                    left: index * width,
+                    behavior: 'smooth'
+                });
+                atualizarAbasAtivas(index);
+            }
+        }
+
+        function atualizarAbasAtivas(index) {
+            const itens = document.querySelectorAll('.nav-item');
+            itens.forEach((item, idx) => {
+                if (idx === index) {
+                    item.classList.add('ativo');
+                } else {
+                    item.classList.remove('ativo');
+                }
+            });
+        }
 
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js').catch(err => {
@@ -725,6 +849,9 @@
                             titulo.innerText = "Serviço de Campo e Limpeza";
                         }
                     }
+
+                    // Sincroniza a aba ativa do menu inferior durante o swipe manual
+                    atualizarAbasAtivas(paginaReal);
                 });
             }
         });
