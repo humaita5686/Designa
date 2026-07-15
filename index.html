@@ -169,7 +169,7 @@
         .bottom-sheet {
             background-color: var(--bg-bottom-sheet);
             border-radius: 30px 30px 0 0;
-            padding: 15px 13px 105px 13px; /* Aumentado de 40px para 105px para liberar espaço para a barra flutuante */
+            padding: 15px 13px 105px 13px; /* Espaço para a barra flutuante */
             flex-grow: 1;
             width: 100%;
             display: flex;
@@ -257,75 +257,74 @@
         }
 
         /* --- BARRA DE NAVEGAÇÃO FLUTUANTE (PÍLULA MINIMALISTA COM SVG) --- */
-.bottom-nav {
-    position: fixed;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(250, 250, 250, 0.7); /* Super translúcido */
-    backdrop-filter: blur(8px); /* Efeito de vidro fosco bem visível */
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 30px;
-    padding: 6px 8px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 50%; /* Estreito e minimalista */
-    max-width: 250px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(55, 55, 55, 0.15);
-    z-index: 2000;
-}
+        .bottom-nav {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(250, 250, 250, 0.7); /* Super translúcido */
+            backdrop-filter: blur(8px); /* Efeito de vidro fosco bem visível */
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 30px;
+            padding: 6px 8px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 50%; /* Estreito e minimalista */
+            max-width: 250px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(55, 55, 55, 0.15);
+            z-index: 2000;
+        }
 
-.nav-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    padding: 7px;
-    border-radius: 50%;
-    flex: 1;
-    color: rgba(8, 57, 78, 0.8); /* Cor padrão do ícone inativo */
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
+        .nav-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            padding: 7px;
+            border-radius: 50%;
+            flex: 1;
+            color: rgba(8, 57, 78, 0.8); /* Cor padrão do ícone inativo */
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-.nav-item .nav-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 27px;
-    height: 27px;
-    transition: transform 0.25s ease;
-}
+        .nav-item .nav-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 27px;
+            height: 27px;
+            transition: transform 0.25s ease;
+        }
 
-.nav-item .nav-icon svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
+        .nav-item .nav-icon svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
 
-/* Estilo da aba ativa */
-.nav-item.ativo {
-    color: var(--primary-accent); /* Transiciona para o dourado #08394E */
-}
+        /* Estilo da aba ativa */
+        .nav-item.ativo {
+            color: var(--primary-accent); /* Transiciona para o dourado #08394E */
+        }
 
-.nav-item.ativo .nav-icon {
-    transform: scale(1.2); /* Destaque sutil de tamanho */
-}
-
+        .nav-item.ativo .nav-icon {
+            transform: scale(1.2); /* Destaque sutil de tamanho */
+        }
     </style>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "9e1ba5be-58e8-414e-be13-fc6b2b3e1fa",
-      notifyButton: {
-        enable: true,
-      },
-    });
-  });
-</script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+                appId: "9e1ba5be-58e8-414e-be13-fc6b2b3e1fa",
+                notifyButton: {
+                    enable: true,
+                },
+            });
+        });
+    </script>
 </head>
 <body>
      <!-- HEADER ÚNICO E GLOBAL NO TOPO -->
@@ -345,11 +344,64 @@
         <div class="app-page-slide" id="slide-midweek">
             <main class="bottom-sheet">
                 <div class="cards-list">
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: var(--primary-accent);"></div><span class="funcao-titulo">🎼 ÁUDIO E VIDEO</span><div class="nomes-container"><div class="nome-irmao" data-field="audio">•••</div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #4F46E5;"></div><span class="funcao-titulo">🎙️ PALCO</span><div class="nomes-container"><div class="nome-irmao" data-field="palco">•••</div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #0D9488;"></div><span class="funcao-titulo">🎤 MICROFONE VOLANTE</span><div class="nomes-container em-linha"><div class="nome-irmao" data-field="v1">•••</div><div class="nome-irmao" data-field="v2">•••</div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #DC2626;"></div><span class="funcao-titulo">👉🏽 INDICADOR INTERNO</span><div class="nomes-container"><div class="nome-irmao" data-field="ind-interno">•••</div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #16A34A;"></div><span class="funcao-titulo">🚪 INDICADOR EXTERNO</span><div class="nomes-container"><div class="nome-irmao" data-field="ind-externo">•••</div></div></div>
+                    <!-- Áudio e Vídeo -->
+                    <div class="card-funcao">
+                        <div class="barra-lateral" style="background-color: var(--primary-accent);"></div>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 8px;">
+                            <svg width="23px" height="23px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#08394E" stroke-width="0.5"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.5"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9426 1.25H12.0574C14.3658 1.24999 16.1748 1.24998 17.5863 1.43975C19.031 1.63399 20.1711 2.03933 21.0659 2.93414C21.9607 3.82895 22.366 4.96897 22.5603 6.41371C22.75 7.82519 22.75 9.63423 22.75 11.9426V12.0574C22.75 14.3658 22.75 16.1748 22.5603 17.5863C22.366 19.031 21.9607 20.1711 21.0659 21.0659C20.1711 21.9607 19.031 22.366 17.5863 22.5603C16.1748 22.75 14.3658 22.75 12.0574 22.75H11.9426C9.63423 22.75 7.82519 22.75 6.41371 22.5603C4.96897 22.366 3.82895 21.9607 2.93414 21.0659C2.03933 20.1711 1.63399 19.031 1.43975 17.5863C1.24998 16.1748 1.24999 14.3658 1.25 12.0574V11.9426C1.24999 9.63423 1.24998 7.82519 1.43975 6.41371C1.63399 4.96897 2.03933 3.82895 2.93414 2.93414C3.82895 2.03933 4.96897 1.63399 6.41371 1.43975C7.82519 1.24998 9.63423 1.24999 11.9426 1.25ZM6.61358 2.92637C5.33517 3.09825 4.56445 3.42514 3.9948 3.9948C3.42514 4.56445 3.09825 5.33517 2.92637 6.61358C2.89922 6.81554 2.87624 7.02735 2.85681 7.25H6.58829L9.44439 2.76185C8.31691 2.77915 7.39205 2.82171 6.61358 2.92637ZM11.2072 2.75032C11.1886 2.80268 11.1638 2.85379 11.1327 2.90266L8.36626 7.25H13.0883L15.9189 2.80191C14.8557 2.7507 13.5747 2.75 12 2.75C11.727 2.75 11.4629 2.75002 11.2072 2.75032ZM17.5982 2.95698L14.8663 7.25H21.1432C21.1238 7.02735 21.1008 6.81554 21.0736 6.61358C20.9018 5.33517 20.5749 4.56445 20.0052 3.9948C19.4677 3.45731 18.7512 3.13594 17.5982 2.95698ZM21.2233 8.75H13.5112C13.5033 8.75013 13.4953 8.75013 13.4874 8.75H7.01122C7.00327 8.75013 6.99532 8.75013 6.98737 8.75H2.77672C2.75045 9.67173 2.75 10.7422 2.75 12C2.75 14.3782 2.75159 16.0864 2.92637 17.3864C3.09825 18.6648 3.42514 19.4355 3.9948 20.0052C4.56445 20.5749 5.33517 20.9018 6.61358 21.0736C7.91356 21.2484 9.62178 21.25 12 21.25C14.3782 21.25 16.0864 21.2484 17.3864 21.0736C18.6648 20.9018 19.4355 20.5749 20.0052 20.0052C20.5749 19.4355 20.9018 18.6648 21.0736 17.3864C21.2484 16.0864 21.25 14.3782 21.25 12C21.25 10.7422 21.2496 9.67173 21.2233 8.75ZM13.3682 11.9212L13.4699 11.9868C14.0897 12.3866 14.6263 12.7328 15.0004 13.0636C15.3983 13.4156 15.75 13.8686 15.75 14.5C15.75 15.1314 15.3983 15.5844 15.0004 15.9364C14.6263 16.2671 14.0897 16.6133 13.4699 17.0132L13.3682 17.0788C12.7421 17.4828 12.1979 17.834 11.7459 18.0347C11.2756 18.2435 10.673 18.394 10.0982 18.0289C9.55356 17.6828 9.38842 17.0922 9.31912 16.5722C9.24994 16.053 9.24996 15.3674 9.25 14.5549V14.4451C9.24996 13.6326 9.24994 12.947 9.31912 12.4278C9.38842 11.9078 9.55356 11.3172 10.0982 10.9711C10.673 10.606 11.2756 10.7565 11.7459 10.9653C12.1979 11.166 12.7421 11.5172 13.3682 11.9212ZM10.8579 12.2517C10.8573 12.2509 10.862 12.2496 10.8737 12.2504C10.8644 12.2529 10.8585 12.2525 10.8579 12.2517ZM10.8971 12.2532C10.9373 12.2601 11.0119 12.2806 11.1372 12.3362C11.4688 12.4834 11.9134 12.7677 12.6073 13.2154C13.2907 13.6564 13.7285 13.9413 14.0066 14.1873C14.2627 14.4137 14.251 14.4932 14.25 14.4996C14.251 14.5061 14.2627 14.5863 14.0066 14.8127C13.7285 15.0587 13.2907 15.3436 12.6073 15.7846C11.9134 16.2323 11.4688 16.5166 11.1372 16.6638C11.0119 16.7194 10.9373 16.7399 10.8971 16.7468C10.8749 16.704 10.8362 16.6006 10.806 16.3741C10.7516 15.9662 10.75 15.3821 10.75 14.5C10.75 13.6179 10.7516 13.0338 10.806 12.6259C10.8362 12.3994 10.8749 12.296 10.8971 12.2532ZM10.8579 16.7483C10.8585 16.7475 10.8644 16.7472 10.8737 16.7496C10.862 16.7504 10.8573 16.7491 10.8579 16.7483ZM10.9101 16.7682C10.9135 16.7711 10.915 16.7731 10.9149 16.7733C10.9148 16.7736 10.9131 16.7722 10.9101 16.7682ZM10.9101 12.2318C10.9131 12.2278 10.9148 12.2264 10.9149 12.2267C10.915 12.2269 10.9135 12.2289 10.9101 12.2318Z" fill="#08394E"></path> </g></svg>
+                            ÁUDIO E VIDEO
+                        </span>
+                        <div class="nomes-container">
+                            <div class="nome-irmao" data-field="audio">•••</div>
+                        </div>
+                    </div>
+
+                    <!-- Palco -->
+                    <div class="card-funcao">
+                        <div class="barra-lateral" style="background-color: #4F46E5;"></div>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 8px;">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#08394E"><g id="SVGRepo_bgCarrier" stroke-width="2"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6.88633 18H16.5332C17.1502 18 17.4587 18 17.7354 17.9611C18.8608 17.8028 19.8348 17.1756 20.3588 16.2717C20.4876 16.0494 20.5852 15.7879 20.7803 15.2649L21.8997 12.2643C22.3153 11.1504 21.3873 10 20.0731 10C19.2628 10 18.5392 10.4533 18.263 11.1339L17.2623 13.6C17.0683 14.078 16.9713 14.317 16.787 14.4835C16.6864 14.5744 16.5683 14.6484 16.4383 14.7019C16.2004 14.8 15.9158 14.8 15.3467 14.8H8.36757C8.07437 14.8 7.92777 14.8 7.79716 14.7735C7.49217 14.7116 7.22656 14.5452 7.05744 14.3101C6.98502 14.2094 6.93505 14.0863 6.83511 13.84L5.73699 11.1339C5.46079 10.4533 4.7372 10 3.92689 10C2.61268 10 1.68469 11.1504 2.10028 12.2643L3.40329 15.757C3.42288 15.8095 3.43267 15.8357 3.44197 15.8594C3.93869 17.1243 5.26517 17.9786 6.76531 17.9996C6.7934 18 6.82438 18 6.88633 18Z" stroke="#08394E" stroke-width="2"></path> <path d="M6 12V8.57143C6 6.41644 6 5.33894 6.70294 4.66947C7.40589 4 8.53726 4 10.8 4H13.2C15.4627 4 16.5941 4 17.2971 4.66947C18 5.33894 18 6.41644 18 8.57143V12" stroke="#08394E" stroke-width="2"></path> <path d="M18 20V18M6 20V18.6667" stroke="##08394E" stroke-width="1.8" stroke-linecap="round"></path> </g></svg>
+                            PALCO
+                        </span>
+                        <div class="nomes-container">
+                            <div class="nome-irmao" data-field="palco">•••</div>
+                        </div>
+                    </div>
+
+                    <!-- Microfone Volante -->
+                    <div class="card-funcao">
+                        <div class="barra-lateral" style="background-color: #0D9488;"></div>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 8px;">
+                            <svg fill="#08394E" height="24px" width="24px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-10.16 -10.16 528.31 528.31" xml:space="preserve" stroke="#08394E" stroke-width="15.23979"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M463.955,44.027c-58.6-58.7-153.7-58.7-212.3,0c-37.6,37.6-51,90.3-40.3,138.7l-193.6,212.1c-24.5,26.8-23.5,68,2.1,93.6 c35.9,35.9,81.1,13.6,93.6,2.1l212-193.8c48.4,10.7,100.9-2.7,138.6-40.3C522.656,197.827,522.656,102.727,463.955,44.027z M94.356,469.727c-7.3,6.7-33.4,19.9-54.5-1.2c-15-15-15.5-38.9-1.2-54.6l182.6-200.1c7.4,15.9,17.6,30.5,30.1,43 s27.1,22.7,43,30.1L94.356,469.727z M271.655,236.527c-46.6-46.6-47.4-121.5-2.9-169.3c22.8,31.8,49.2,63,79.1,92.9 c29.9,29.9,61.2,56.3,93,79.2C393.056,283.927,318.255,283.127,271.655,236.527z M459.255,217.827c-31.3-22.3-62-48.2-91.5-77.7 c-29.4-29.4-55.3-60.1-77.5-91.3c47.4-31.7,112-26.6,153.7,15.2C485.755,105.827,490.855,170.427,459.255,217.827z"></path> </g> </g> <g> <g> <path d="M216.755,291.427c-5.5-5.5-14.4-5.5-20,0l-25.8,25.8c-5.5,5.5-5.5,14.5,0,20c4.6,4.6,13.7,6.3,20,0l25.8-25.8 C222.255,305.927,222.255,296.927,216.755,291.427z"></path> </g> </g> </g></svg>MICROFONE VOLANTE</span>
+                        <div class="nomes-container em-linha">
+                            <div class="nome-irmao" data-field="v1">•••</div>
+                            <div class="nome-irmao" data-field="v2">•••</div>
+                        </div>
+                    </div>
+
+                    <!-- Indicador Interno -->
+                    <div class="card-funcao">
+                        <div class="barra-lateral" style="background-color: #DC2626;"></div>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 8px;">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#08394E"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 10.4167C3 7.21907 3 5.62028 3.37752 5.08241C3.75503 4.54454 5.25832 4.02996 8.26491 3.00079L8.83772 2.80472C10.405 2.26824 11.1886 2 12 2C12.8114 2 13.595 2.26824 15.1623 2.80472L15.7351 3.00079C18.7417 4.02996 20.245 4.54454 20.6225 5.08241C21 5.62028 21 7.21907 21 10.4167C21 10.8996 21 11.4234 21 11.9914C21 17.6294 16.761 20.3655 14.1014 21.5273C13.38 21.8424 13.0193 22 12 22C10.9807 22 10.62 21.8424 9.89856 21.5273C7.23896 20.3655 3 17.6294 3 11.9914C3 11.4234 3 10.8996 3 10.4167Z" stroke="#08394E" stroke-width="2"></path> <circle cx="12" cy="9" r="2" stroke="#08394E" stroke-width="1.8"></circle> <path d="M16 15C16 16.1046 16 17 12 17C8 17 8 16.1046 8 15C8 13.8954 9.79086 13 12 13C14.2091 13 16 13.8954 16 15Z" stroke="#08394E" stroke-width="2"></path> </g></svg>
+                            INDICADOR INTERNO
+                        </span>
+                        <div class="nomes-container">
+                            <div class="nome-irmao" data-field="ind-interno">•••</div>
+                        </div>
+                    </div>
+
+                    <!-- Indicador Externo -->
+                    <div class="card-funcao">
+                        <div class="barra-lateral" style="background-color: #16A34A;"></div>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 8px;">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#08394E"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 4.5H8C5.64298 4.5 4.46447 4.5 3.73223 5.23223C3 5.96447 3 7.14298 3 9.5V14.5C3 16.857 3 18.0355 3.73223 18.7678C4.46447 19.5 5.64298 19.5 8 19.5H9" stroke="#08394E" stroke-width="2.1"></path> <path d="M9 6.4764C9 4.18259 9 3.03569 9.70725 2.4087C10.4145 1.78171 11.4955 1.97026 13.6576 2.34736L15.9864 2.75354C18.3809 3.17118 19.5781 3.37999 20.2891 4.25826C21 5.13652 21 6.40672 21 8.94711V15.0529C21 17.5933 21 18.8635 20.2891 19.7417C19.5781 20.62 18.3809 20.8288 15.9864 21.2465L13.6576 21.6526C11.4955 22.0297 10.4145 22.2183 9.70725 21.5913C9 20.9643 9 19.8174 9 17.5236V6.4764Z" stroke="#08394E" stroke-width="2.1"></path> <path d="M12 11V13" stroke="#08394E" stroke-width="1.9200000000000004" stroke-linecap="round"></path> </g></svg>
+                            INDICADOR EXTERNO
+                        </span>
+                        <div class="nomes-container">
+                            <div class="nome-irmao" data-field="ind-externo">•••</div>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
@@ -358,69 +410,130 @@
         <div class="app-page-slide" id="slide-weekend">
             <main class="bottom-sheet">
                 <div class="cards-list">
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #333333;"></div><span class="funcao-titulo">👔 PRESIDENTE</span><div class="nomes-container"><div class="nome-irmao" data-field="presidente">•••</div></div></div>
-                    <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;"><div class="barra-lateral" style="background: #0D9488;"></div><span class="funcao-titulo" style="padding: 0px 15px">🎙️ DISCURSO PÚBLICO</span><div style="display: flex; gap: 25px; width: 100%;"><div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;"><span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📝 ESBOÇO:</span><div class="nome-irmao" data-field="esboco" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div></div><div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;"><span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🎶 CÂNTICO:</span><div class="nome-irmao" data-field="cantico" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div></div></div><div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div><div style="display: flex; flex-direction: column; gap: 2px; width: 100%;"><span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">📖 TEMA</span><div class="nome-irmao" data-field="tema" style="text-align: left; font-size: 22px; padding: 0px 17px; font-weight: 500; line-height: 1.3;">•••</div></div><div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div><div style="display: flex; gap: 16px; width: 100%;"><div style="display: flex; flex-direction: column; gap: 2px; flex: 1;"><span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🗣️ ORADOR</span><div class="nome-irmao" data-field="orador" style="text-align: left; font-weight: 500; padding: 0px 17px; font-size: 19px;">•••</div></div><div style="display: flex; flex-direction: column; gap: 2px; flex: 1;"><span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🏠 CONGREGAÇÃO</span><div class="nome-irmao" data-field="congregacao" style="text-align: left; font-weight: 400; font-size: 19px;">•••</div></div></div></div>
-                    <div class="card-funcao"><div class="barra-lateral" style="background-color: #DD33AA;"></div><span class="funcao-titulo">📖 LEITOR A SENTINELA</span><div class="nomes-container"><div class="nome-irmao" data-field="leitor">•••</div></div></div>
+                    <!-- Presidente -->
+                    <div class="card-funcao">
+                        <div class="barra-lateral" style="background-color: #333333;"></div>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 5px;">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="6" r="4" stroke="#08394E" stroke-width="2"></circle> <circle cx="18" cy="16" r="4" stroke="#08394E" stroke-width="2"></circle> <path d="M16.6665 16L17.5 17L19.3332 15.1111" stroke="#08394E" stroke-width="1.9440000000000002" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15 13.3271C14.0736 13.1162 13.0609 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C17.6874 22 19.3315 20.9817 19.8068 19.5" stroke="#08394E" stroke-width="1.9440000000000002"></path> </g></svg>
+                            PRESIDENTE
+                        </span>
+                        <div class="nomes-container">
+                            <div class="nome-irmao" data-field="presidente">•••</div>
+                        </div>
+                    </div>
+
+                    <!-- Discurso Público -->
+                    <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;">
+                        <div class="barra-lateral" style="background: #0D9488;"></div>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 8px; padding: 0px 15px;">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#08394e"><g id="SVGRepo_bgCarrier" stroke-width="2"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z" stroke="#08394E" stroke-width="2"></path> <path d="M8 10.5H16" stroke="#08394E" stroke-width="2" stroke-linecap="round"></path> <path d="M8 14H13.5" stroke="#08394E" stroke-width="2" stroke-linecap="round"></path> </g></svg>
+                            DISCURSO PÚBLICO
+                        </span>
+                        <div style="display: flex; gap: 25px; width: 100%;">
+                            <div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;">
+                                <span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">
+                                    <svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; padding: 0 5px 3px 0;"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.18 8.03933L18.6435 7.57589C19.4113 6.80804 20.6563 6.80804 21.4241 7.57589C22.192 8.34374 22.192 9.58868 21.4241 10.3565L20.9607 10.82M18.18 8.03933C18.18 8.03933 18.238 9.02414 19.1069 9.89309C19.9759 10.762 20.9607 10.82 20.9607 10.82M18.18 8.03933L13.9194 12.2999C13.6308 12.5885 13.4865 12.7328 13.3624 12.8919C13.2161 13.0796 13.0906 13.2827 12.9882 13.4975C12.9014 13.6797 12.8368 13.8732 12.7078 14.2604L12.2946 15.5L12.1609 15.901M20.9607 10.82L16.7001 15.0806C16.4115 15.3692 16.2672 15.5135 16.1081 15.6376C15.9204 15.7839 15.7173 15.9094 15.5025 16.0118C15.3203 16.0986 15.1268 16.1632 14.7396 16.2922L13.5 16.7054L13.099 16.8391M13.099 16.8391L12.6979 16.9728C12.5074 17.0363 12.2973 16.9867 12.1553 16.8447C12.0133 16.7027 11.9637 16.4926 12.0272 16.3021L12.1609 15.901M13.099 16.8391L12.1609 15.901" stroke="#08394E" stroke-width="2"></path> <path d="M8 13H10.5" stroke="#08394E" stroke-width="2" stroke-linecap="round"></path> <path d="M8 9H14.5" stroke="#08394E" stroke-width="2" stroke-linecap="round"></path> <path d="M8 17H9.5" stroke="#08394E" stroke-width="2" stroke-linecap="round"></path> <path d="M19.8284 3.17157C18.6569 2 16.7712 2 13 2H11C7.22876 2 5.34315 2 4.17157 3.17157C3 4.34315 3 6.22876 3 10V14C3 17.7712 3 19.6569 4.17157 20.8284C5.34315 22 7.22876 22 11 22H13C16.7712 22 18.6569 22 19.8284 20.8284C20.7715 19.8853 20.9554 18.4796 20.9913 16" stroke="#08394E" stroke-width="2" stroke-linecap="round"></path> </g></svg>ESBOÇO:</span>
+                                <div class="nome-irmao" data-field="esboco" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div>
+                            </div>
+                            <div style="display: flex; flex-direction: row; align-items: center; gap: 6px; flex: 1;">
+                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">
+                                    <svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; padding: 0 5px 3px 0;"></g><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 19C9 20.6569 7.65685 22 6 22C4.34315 22 3 20.6569 3 19C3 17.3431 4.34315 16 6 16C7.65685 16 9 17.3431 9 19Z" stroke="#08394e" stroke-width="2"></path> <path d="M21 17C21 18.6569 19.6569 20 18 20C16.3431 20 15 18.6569 15 17C15 15.3431 16.3431 14 18 14C19.6569 14 21 15.3431 21 17Z" stroke="#08394e" stroke-width="2"></path> <path d="M9 19V8" stroke="#08394e" stroke-width="2"></path> <path d="M21 17V6" stroke="#08394e" stroke-width="2"></path> <path d="M15.7351 3.75466L11.7351 5.08799C10.4151 5.52801 9.75503 5.74801 9.37752 6.27179C9 6.79556 9 7.49128 9 8.88273V11.9997L21 7.99969V7.54939C21 5.01693 21 3.7507 20.1694 3.15206C19.3388 2.55341 18.1376 2.95383 15.7351 3.75466Z" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> </g></svg>CÂNTICO:</span>
+                                <div class="nome-irmao" data-field="cantico" style="text-align: left; font-weight: 400; padding: 0px 4px 3px 0px; font-size: 19px;">•••</div>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div>
+                        <div style="display: flex; flex-direction: column; gap: 2px; width: 100%;">
+                            <span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">
+                                <svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; padding: 0 5px 3px 0;"></g><g id="SVGRepo_bgCarrier" stroke-width="0"></g></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 10C3 6.22876 3 4.34315 4.17157 3.17157C5.34315 2 7.22876 2 11 2H13C16.7712 2 18.6569 2 19.8284 3.17157C21 4.34315 21 6.22876 21 10V14C21 17.7712 21 19.6569 19.8284 20.8284C18.6569 22 16.7712 22 13 22H11C7.22876 22 5.34315 22 4.17157 20.8284C3 19.6569 3 17.7712 3 14V10Z" stroke="#08394e" stroke-width="2"></path> <path d="M8 12H16" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> <path d="M8 8H16" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> <path d="M8 16H13" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> </g></svg>TEMA</span>
+                            <div class="nome-irmao" data-field="tema" style="text-align: left; font-size: 22px; padding: 0px 17px; font-weight: 500; line-height: 1.3;">•••</div>
+                        </div>
+                        <div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div>
+                        <div style="display: flex; gap: 16px; width: 100%;">
+                            <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
+                                <span style="font-size: 14px; padding: 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">
+                                    <svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; padding: 0 4px 3px 0;"></g><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="10" cy="6" r="4" stroke="#08394e" stroke-width="2"></circle> <path d="M18 17.5C18 19.9853 18 22 10 22C2 22 2 19.9853 2 17.5C2 15.0147 5.58172 13 10 13C14.4183 13 18 15.0147 18 17.5Z" stroke="#08394e" stroke-width="2"></path> <path d="M19 2C19 2 21 3.2 21 6C21 8.8 19 10 19 10" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> <path d="M17 4C17 4 18 4.6 18 6C18 7.4 17 8 17 8" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> </g></svg>ORADOR</span>
+                                <div class="nome-irmao" data-field="orador" style="text-align: left; font-weight: 500; padding: 0px 17px; font-size: 19px;">•••</div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
+                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">
+                                    <svg width="25px" height="25px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; padding: 0 4px 5px 0;"></g><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M22 22L2 22" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> <path d="M2 11L10.1259 4.49931C11.2216 3.62279 12.7784 3.62279 13.8741 4.49931L22 11" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> <path d="M4 22V9.5" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> <path d="M20 22V9.5" stroke="#08394e" stroke-width="2" stroke-linecap="round"></path> <path d="M15 22V17C15 15.5858 15 14.8787 14.5607 14.4393C14.1213 14 13.4142 14 12 14C10.5858 14 9.87868 14 9.43934 14.4393C9 14.8787 9 15.5858 9 17V22" stroke="#08394e" stroke-width="2"></path> <path d="M14 9.5C14 10.6046 13.1046 11.5 12 11.5C10.8954 11.5 10 10.6046 10 9.5C10 8.39543 10.8954 7.5 12 7.5C13.1046 7.5 14 8.39543 14 9.5Z" stroke="#08394e" stroke-width="2"></path> </g></svg>CONGREGAÇÃO</span>
+                                <div class="nome-irmao" data-field="congregacao" style="text-align: left; font-weight: 400; font-size: 19px;">•••</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leitor de A Sentinela -->
+                    <div class="card-funcao">
+                        <div class="barra-lateral" style="background-color: #DD33AA;"></div>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 8px;">
+                            <svg width="24px" height="24px" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#08394E" stroke-width="0.6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20.082 3.01787L20.1081 3.76741L20.082 3.01787ZM16.5 3.48757L16.2849 2.76907V2.76907L16.5 3.48757ZM13.6738 4.80287L13.2982 4.15375L13.2982 4.15375L13.6738 4.80287ZM3.9824 3.07501L3.93639 3.8236L3.9824 3.07501ZM7 3.48757L7.19136 2.76239V2.76239L7 3.48757ZM10.2823 4.87558L9.93167 5.5386L10.2823 4.87558ZM13.6276 20.0694L13.9804 20.7312L13.6276 20.0694ZM17 18.6335L16.8086 17.9083H16.8086L17 18.6335ZM19.9851 18.2229L20.032 18.9715L19.9851 18.2229ZM10.3724 20.0694L10.0196 20.7312H10.0196L10.3724 20.0694ZM7 18.6335L7.19136 17.9083H7.19136L7 18.6335ZM4.01486 18.2229L3.96804 18.9715H3.96804L4.01486 18.2229ZM2.75 16.1437V4.99792H1.25V16.1437H2.75ZM22.75 16.1437V4.93332H21.25V16.1437H22.75ZM20.0559 2.26832C18.9175 2.30798 17.4296 2.42639 16.2849 2.76907L16.7151 4.20606C17.6643 3.92191 18.9892 3.80639 20.1081 3.76741L20.0559 2.26832ZM16.2849 2.76907C15.2899 3.06696 14.1706 3.6488 13.2982 4.15375L14.0495 5.452C14.9 4.95981 15.8949 4.45161 16.7151 4.20606L16.2849 2.76907ZM3.93639 3.8236C4.90238 3.88297 5.99643 3.99842 6.80864 4.21274L7.19136 2.76239C6.23055 2.50885 5.01517 2.38707 4.02841 2.32642L3.93639 3.8236ZM6.80864 4.21274C7.77076 4.46663 8.95486 5.02208 9.93167 5.5386L10.6328 4.21257C9.63736 3.68618 8.32766 3.06224 7.19136 2.76239L6.80864 4.21274ZM13.9804 20.7312C14.9714 20.2029 16.1988 19.6206 17.1914 19.3587L16.8086 17.9083C15.6383 18.2171 14.2827 18.8702 13.2748 19.4075L13.9804 20.7312ZM17.1914 19.3587C17.9943 19.1468 19.0732 19.0314 20.032 18.9715L19.9383 17.4744C18.9582 17.5357 17.7591 17.6575 16.8086 17.9083L17.1914 19.3587ZM10.7252 19.4075C9.71727 18.8702 8.3617 18.2171 7.19136 17.9083L6.80864 19.3587C7.8012 19.6206 9.0286 20.2029 10.0196 20.7312L10.7252 19.4075ZM7.19136 17.9083C6.24092 17.6575 5.04176 17.5357 4.06168 17.4744L3.96804 18.9715C4.9268 19.0314 6.00566 19.1468 6.80864 19.3587L7.19136 17.9083ZM21.25 16.1437C21.25 16.8295 20.6817 17.4279 19.9383 17.4744L20.032 18.9715C21.5062 18.8793 22.75 17.6799 22.75 16.1437H21.25ZM22.75 4.93332C22.75 3.47001 21.5847 2.21507 20.0559 2.26832L20.1081 3.76741C20.7229 3.746 21.25 4.25173 21.25 4.93332H22.75ZM1.25 16.1437C1.25 17.6799 2.49378 18.8793 3.96804 18.9715L4.06168 17.4744C3.31831 17.4279 2.75 16.8295 2.75 16.1437H1.25ZM13.2748 19.4075C12.4825 19.8299 11.5175 19.8299 10.7252 19.4075L10.0196 20.7312C11.2529 21.3886 12.7471 21.3886 13.9804 20.7312L13.2748 19.4075ZM13.2982 4.15375C12.4801 4.62721 11.4617 4.65083 10.6328 4.21257L9.93167 5.5386C11.2239 6.22189 12.791 6.18037 14.0495 5.452L13.2982 4.15375ZM2.75 4.99792C2.75 4.30074 3.30243 3.78463 3.93639 3.8236L4.02841 2.32642C2.47017 2.23065 1.25 3.49877 1.25 4.99792H2.75Z" stroke="#08394E" stroke-width="0.7" fill="#08394E"></path> <path d="M12 5.50049V20.5005" stroke="#08394E" stroke-width="2"></path> </g></svg>LEITOR A SENTINELA
+                        </span>
+                        <div class="nomes-container">
+                            <div class="nome-irmao" data-field="leitor">•••</div>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
-
-        <!-- PÁGINA 3: CAMPO E LIMPEZA (ATUAL) -->
+         <!-- PÁGINA 3: CAMPO E LIMPEZA (ATUAL) -->
         <div class="app-page-slide" id="slide-campo">
             <main class="bottom-sheet">
                 <div class="cards-list">
-                    <!-- Card 1: Sábado -->
+                    <!-- Sábado -->
                     <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;">
                         <div class="barra-lateral" style="background: #0F766E;"></div>
-                        <span class="funcao-titulo" style="padding: 0px 15px">👜 SÁBADO</span>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 8px; padding: 0px 15px;">
+                            <svg width="24px" height="24px" viewBox="0 1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 12C3 15.7712 3 19.6569 4.31802 20.8284C5.63604 22 7.75736 22 12 22C16.2426 22 18.364 22 19.682 20.8284C21 19.6569 21 15.7712 21 12" stroke="#08394E" stroke-width="2"></path> <path d="M14.6603 14.2019L20.6676 12.3997C21.2631 12.2211 21.5609 12.1317 21.7498 11.9176C21.7866 11.8759 21.8199 11.8312 21.8492 11.784C22 11.5415 22 11.2307 22 10.6089C22 8.15877 22 6.9337 21.327 6.10659C21.1977 5.94763 21.0524 5.80233 20.8934 5.67298C20.0663 5 18.8412 5 16.3911 5H7.60893C5.15877 5 3.9337 5 3.10659 5.67298C2.94763 5.80233 2.80233 5.94763 2.67298 6.10659C2 6.9337 2 8.15877 2 10.6089C2 11.2307 2 11.5415 2.15078 11.784C2.18015 11.8312 2.21341 11.8759 2.25021 11.9176C2.43915 12.1317 2.7369 12.2211 3.3324 12.3997L9.33968 14.2019" stroke="#08394E" stroke-width="2"></path> <path d="M6.5 5C7.32344 4.97913 8.15925 4.45491 8.43944 3.68032C8.44806 3.65649 8.4569 3.62999 8.47457 3.57697L8.50023 3.5C8.54241 3.37344 8.56351 3.31014 8.58608 3.254C8.87427 2.53712 9.54961 2.05037 10.3208 2.00366C10.3812 2 10.4479 2 10.5814 2H13.4191C13.5525 2 13.6192 2 13.6796 2.00366C14.4508 2.05037 15.1262 2.53712 15.4144 3.254C15.4369 3.31014 15.458 3.37343 15.5002 3.5L15.5259 3.57697C15.5435 3.62968 15.5524 3.65656 15.561 3.68032C15.8412 4.45491 16.6766 4.97913 17.5 5" stroke="#08394E" stroke-width="2"></path> <path d="M14 12.5H10C9.72386 12.5 9.5 12.7239 9.5 13V15.1615C9.5 15.3659 9.62448 15.5498 9.8143 15.6257L10.5144 15.9058C11.4681 16.2872 12.5319 16.2872 13.4856 15.9058L14.1857 15.6257C14.3755 15.5498 14.5 15.3659 14.5 15.1615V13C14.5 12.7239 14.2761 12.5 14 12.5Z" stroke="#08394E" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>SÁBADO
+                        </span>
                         <div style="display: flex; gap: 25px; width: 100%;">
-                            <!-- Dirigente empilhado na esquerda (com destaque e recuo original) -->
                             <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
-                                <span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">👔 DIRIGENTE</span>
+                                <span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">
+                                    <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; padding: 0 4px 5px 0;"></g><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="6" r="4" stroke="#08394e" stroke-width="2"></circle> <path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z" stroke="#08394e" stroke-width="2"></path> </g></svg>DIRIGENTE</span>
                                 <div class="nome-irmao" data-field="sabado-dirigente" style="text-align: left; font-size: 20px; padding: 0px 0px 0px 17px; font-weight: 500; line-height: 1.3;">•••</div>
                             </div>
-                            <!-- Local empilhado na direita -->
                             <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
-                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🏠 LOCAL</span>
+                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">
+                                    <svg width="25px" height="25px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; padding: 0 4px 5px 0;"></g><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18 8L18.9487 8.31623C19.9387 8.64624 20.4337 8.81124 20.7169 9.20407C21 9.5969 21 10.1187 21 11.1623V16.829C21 18.1199 21 18.7653 20.6603 19.18C20.5449 19.3208 20.4048 19.4394 20.247 19.5301C19.7821 19.797 19.1455 19.6909 17.8721 19.4787C16.6157 19.2693 15.9875 19.1646 15.3648 19.2167C15.1463 19.235 14.9292 19.2676 14.715 19.3144C14.1046 19.4477 13.5299 19.735 12.3806 20.3097C10.8809 21.0596 10.131 21.4345 9.33284 21.5501C9.09242 21.5849 8.8498 21.6021 8.60688 21.6016C7.80035 21.6001 7.01186 21.3373 5.43488 20.8116L5.05132 20.6838C4.06129 20.3538 3.56627 20.1888 3.28314 19.7959C3 19.4031 3 18.8813 3 17.8377V12.908C3 11.2491 3 10.4197 3.48841 9.97358C3.57388 9.89552 3.66809 9.82762 3.76917 9.77122C4.34681 9.44894 5.13369 9.71123 6.70746 10.2358" stroke="#08394e" stroke-width="2"></path> <path d="M6 7.70031C6 4.55211 8.68629 2 12 2C15.3137 2 18 4.55211 18 7.70031C18 10.8238 16.085 14.4687 13.0972 15.7721C12.4007 16.076 11.5993 16.076 10.9028 15.7721C7.91499 14.4687 6 10.8238 6 7.70031Z" stroke="#08394e" stroke-width="2"></path> <circle cx="12" cy="8" r="2" stroke="#08394e" stroke-width="2"></circle> </g></svg>LOCAL</span>
                                 <div class="nome-irmao" data-field="sabado-local" style="text-align: left; font-weight: 500; font-size: 20px;">•••</div>
                             </div>
                         </div>
                         <div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div>
-                        <!-- Horário centralizado na base do card -->
                         <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 8px; width: 100%;">
-                            <span style="font-size: 18px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px; white-space: nowrap;">⏰ HORÁRIO:</span>
+                            <span style="font-size: 18px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px; white-space: nowrap;"><svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: bottom;"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="13" r="9" stroke="#e33834" stroke-width="2.4"></circle> <path d="M12 9V13L14.5 15.5" stroke="#e33834" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3.5 4.5L7.50002 2" stroke="#e33834" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M20.5 4.5L16.5 2" stroke="#e33834" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> HORÁRIO:</span>
                             <div class="nome-irmao" data-field="sabado-horario" style="font-size: 25px; font-weight: 700; white-space: nowrap; padding-bottom: 2px;">•••</div>
                         </div>
                     </div>
 
-                     <!-- Card 2: Domingo -->
+                     <!-- Domingo -->
                     <div class="card-funcao" style="min-height: auto; gap: 20px; padding: 20px 0;">
                         <div class="barra-lateral" style="background: #1D4ED8;"></div>
-                        <span class="funcao-titulo" style="padding: 0px 15px">💼 DOMINGO</span>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 8px; padding: 0px 15px;">
+                            <svg width="24px" height="24px" viewBox="0 1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 12C3 15.7712 3 19.6569 4.31802 20.8284C5.63604 22 7.75736 22 12 22C16.2426 22 18.364 22 19.682 20.8284C21 19.6569 21 15.7712 21 12" stroke="#08394E" stroke-width="2"></path> <path d="M14.6603 14.2019L20.6676 12.3997C21.2631 12.2211 21.5609 12.1317 21.7498 11.9176C21.7866 11.8759 21.8199 11.8312 21.8492 11.784C22 11.5415 22 11.2307 22 10.6089C22 8.15877 22 6.9337 21.327 6.10659C21.1977 5.94763 21.0524 5.80233 20.8934 5.67298C20.0663 5 18.8412 5 16.3911 5H7.60893C5.15877 5 3.9337 5 3.10659 5.67298C2.94763 5.80233 2.80233 5.94763 2.67298 6.10659C2 6.9337 2 8.15877 2 10.6089C2 11.2307 2 11.5415 2.15078 11.784C2.18015 11.8312 2.21341 11.8759 2.25021 11.9176C2.43915 12.1317 2.7369 12.2211 3.3324 12.3997L9.33968 14.2019" stroke="#08394E" stroke-width="2"></path> <path d="M6.5 5C7.32344 4.97913 8.15925 4.45491 8.43944 3.68032C8.44806 3.65649 8.4569 3.62999 8.47457 3.57697L8.50023 3.5C8.54241 3.37344 8.56351 3.31014 8.58608 3.254C8.87427 2.53712 9.54961 2.05037 10.3208 2.00366C10.3812 2 10.4479 2 10.5814 2H13.4191C13.5525 2 13.6192 2 13.6796 2.00366C14.4508 2.05037 15.1262 2.53712 15.4144 3.254C15.4369 3.31014 15.458 3.37343 15.5002 3.5L15.5259 3.57697C15.5435 3.62968 15.5524 3.65656 15.561 3.68032C15.8412 4.45491 16.6766 4.97913 17.5 5" stroke="#08394E" stroke-width="2"></path> <path d="M14 12.5H10C9.72386 12.5 9.5 12.7239 9.5 13V15.1615C9.5 15.3659 9.62448 15.5498 9.8143 15.6257L10.5144 15.9058C11.4681 16.2872 12.5319 16.2872 13.4856 15.9058L14.1857 15.6257C14.3755 15.5498 14.5 15.3659 14.5 15.1615V13C14.5 12.7239 14.2761 12.5 14 12.5Z" stroke="#08394E" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>DOMINGO
+                        </span>
                         <div style="display: flex; gap: 25px; width: 100%;">
-                            <!-- Dirigente empilhado na esquerda (com destaque e recuo original) -->
                             <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
-                                <span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">👔 DIRIGENTE</span>
+                                <span style="font-size: 14px; padding: 0px 0px 0px 17px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">
+                                    <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; padding: 0 4px 5px 0;"></g><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="6" r="4" stroke="#08394e" stroke-width="2"></circle> <path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z" stroke="#08394e" stroke-width="2"></path> </g></svg>DIRIGENTE</span>
                                 <div class="nome-irmao" data-field="domingo-dirigente" style="text-align: left; font-size: 20px; padding: 0px 0px 0px 17px; font-weight: 500; line-height: 1.3;">•••</div>
                             </div>
-                            <!-- Local empilhado na direita -->
                             <div style="display: flex; flex-direction: column; gap: 2px; flex: 1;">
-                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">🏠 LOCAL</span>
+                                <span style="font-size: 14px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px;">
+                                    <svg width="25px" height="25px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; padding: 0 4px 5px 0;"></g><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18 8L18.9487 8.31623C19.9387 8.64624 20.4337 8.81124 20.7169 9.20407C21 9.5969 21 10.1187 21 11.1623V16.829C21 18.1199 21 18.7653 20.6603 19.18C20.5449 19.3208 20.4048 19.4394 20.247 19.5301C19.7821 19.797 19.1455 19.6909 17.8721 19.4787C16.6157 19.2693 15.9875 19.1646 15.3648 19.2167C15.1463 19.235 14.9292 19.2676 14.715 19.3144C14.1046 19.4477 13.5299 19.735 12.3806 20.3097C10.8809 21.0596 10.131 21.4345 9.33284 21.5501C9.09242 21.5849 8.8498 21.6021 8.60688 21.6016C7.80035 21.6001 7.01186 21.3373 5.43488 20.8116L5.05132 20.6838C4.06129 20.3538 3.56627 20.1888 3.28314 19.7959C3 19.4031 3 18.8813 3 17.8377V12.908C3 11.2491 3 10.4197 3.48841 9.97358C3.57388 9.89552 3.66809 9.82762 3.76917 9.77122C4.34681 9.44894 5.13369 9.71123 6.70746 10.2358" stroke="#08394e" stroke-width="2"></path> <path d="M6 7.70031C6 4.55211 8.68629 2 12 2C15.3137 2 18 4.55211 18 7.70031C18 10.8238 16.085 14.4687 13.0972 15.7721C12.4007 16.076 11.5993 16.076 10.9028 15.7721C7.91499 14.4687 6 10.8238 6 7.70031Z" stroke="#08394e" stroke-width="2"></path> <circle cx="12" cy="8" r="2" stroke="#08394e" stroke-width="2"></circle> </g></svg>LOCAL</span>
                                 <div class="nome-irmao" data-field="domingo-local" style="text-align: left; font-weight: 500; font-size: 20px;">•••</div>
                             </div>
                         </div>
                         <div style="width: 100%; height: 1px; background-color: rgba(0,0,0,0.06); margin: -2px 0;"></div>
-                        <!-- Horário centralizado na base do card -->
                         <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 8px; width: 100%;">
-                            <span style="font-size: 18px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px; white-space: nowrap;">⏰ HORÁRIO:</span>
+                            <span style="font-size: 18px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px; white-space: nowrap;"><svg width="24px" height="24px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: bottom;"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.144"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="13" r="9" stroke="#e33834" stroke-width="2.4"></circle> <path d="M12 9V13L14.5 15.5" stroke="#e33834" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3.5 4.5L7.50002 2" stroke="#e33834" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M20.5 4.5L16.5 2" stroke="#e33834" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> HORÁRIO:</span>
                             <div class="nome-irmao" data-field="domingo-horario" style="font-size: 25px; font-weight: 700; white-space: nowrap; padding-bottom: 2px;">•••</div>
                         </div>
                     </div>
 
-                    <!-- Card 3: Limpeza semanal -->
+                    <!-- Limpeza Semanal -->
                     <div class="card-funcao">
                         <div class="barra-lateral" style="background-color: #B45309;"></div>
-                        <span class="funcao-titulo">🧹 LIMPEZA SEMANAL</span>
+                        <span class="funcao-titulo" style="display: flex; align-items: center; gap: 5px;">
+                            <svg width="25px" height="25px" viewBox="0 1 24 24" style="vertical-align: middle; padding: 0 0 0 0;" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.11686 7.7517C5.53016 7.72415 5.88754 8.03685 5.91509 8.45015L6.37503 15.3493C6.46489 16.6971 6.52892 17.6349 6.66948 18.3406C6.80583 19.025 6.99617 19.3873 7.26958 19.6431C7.54299 19.8989 7.91715 20.0647 8.60915 20.1552C9.32255 20.2485 10.2626 20.25 11.6134 20.25H12.3868C13.7376 20.25 14.6776 20.2485 15.391 20.1552C16.083 20.0647 16.4572 19.8989 16.7306 19.6431C17.004 19.3873 17.1943 19.025 17.3307 18.3406C17.4713 17.6349 17.5353 16.6971 17.6251 15.3493L18.0851 8.45015C18.1126 8.03685 18.47 7.72415 18.8833 7.7517C19.2966 7.77925 19.6093 8.13663 19.5818 8.54993L19.1183 15.5017C19.0328 16.7844 18.9638 17.8206 18.8018 18.6336C18.6334 19.4789 18.347 20.185 17.7554 20.7385C17.1638 21.2919 16.4402 21.5308 15.5856 21.6425C14.7635 21.7501 13.7251 21.7501 12.4395 21.75H11.5607C10.2751 21.7501 9.23664 21.7501 8.4146 21.6425C7.55995 21.5308 6.8364 21.2919 6.2448 20.7385C5.65321 20.185 5.36679 19.4789 5.19839 18.6336C5.03642 17.8205 4.96736 16.7844 4.88186 15.5017L4.41841 8.54993C4.39086 8.13663 4.70357 7.77925 5.11686 7.7517Z" stroke="#08394E" stroke-width="0.7" fill="#08394e"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3553 2.25004L10.3094 2.25002C10.093 2.24988 9.90445 2.24976 9.72643 2.27819C9.02313 2.39049 8.41453 2.82915 8.08559 3.46084C8.00232 3.62074 7.94282 3.79964 7.87452 4.00496L7.86 4.04858L7.76291 4.33984C7.74392 4.39681 7.73863 4.41251 7.73402 4.42524C7.55891 4.90936 7.10488 5.23659 6.59023 5.24964C6.5767 5.24998 6.56013 5.25004 6.50008 5.25004H3.5C3.08579 5.25004 2.75 5.58582 2.75 6.00004C2.75 6.41425 3.08579 6.75004 3.5 6.75004L6.50865 6.75004L6.52539 6.75004H17.4748L17.4915 6.75004L20.5001 6.75004C20.9143 6.75004 21.2501 6.41425 21.2501 6.00004C21.2501 5.58582 20.9143 5.25004 20.5001 5.25004H17.5001C17.44 5.25004 17.4235 5.24998 17.4099 5.24964C16.8953 5.23659 16.4413 4.90933 16.2661 4.42522C16.2616 4.41258 16.2562 4.39653 16.2373 4.33984L16.1402 4.04858L16.1256 4.00494C16.0573 3.79961 15.9978 3.62073 15.9146 3.46084C15.5856 2.82915 14.977 2.39049 14.2737 2.27819C14.0957 2.24976 13.9072 2.24988 13.6908 2.25002L13.6448 2.25004H10.3553ZM9.14458 4.93548C9.10531 5.04404 9.05966 5.14902 9.00815 5.25004H14.992C14.9405 5.14902 14.8949 5.04405 14.8556 4.9355L14.8169 4.82216L14.7171 4.52292C14.626 4.2494 14.605 4.19363 14.5842 4.15364C14.4745 3.94307 14.2716 3.79686 14.0372 3.75942C13.9927 3.75231 13.9331 3.75004 13.6448 3.75004H10.3553C10.067 3.75004 10.0075 3.75231 9.96296 3.75942C9.72853 3.79686 9.52566 3.94307 9.41601 4.15364C9.39519 4.19363 9.37419 4.24942 9.28302 4.52292L9.18322 4.82234C9.1682 4.86742 9.1565 4.90251 9.14458 4.93548Z" stroke="#08394E" stroke-width="0.7" fill="#08394e"></path> </g></svg>LIMPEZA SEMANAL</span>
                         <div class="nomes-container">
                             <div class="nome-irmao" data-field="limpeza">•••</div>
                         </div>
@@ -431,49 +544,47 @@
 
     </div>
 
-               <!-- BARRA DE NAVEGAÇÃO FLUTUANTE (ESTILO PÍLULA MINIMALISTA COM NOVA BÍBLIA 3D) -->
+    <!-- BARRA DE NAVEGAÇÃO FLUTUANTE (ESTILO PÍLULA MINIMALISTA COM NOVA BÍBLIA 3D) -->
     <nav class="bottom-nav">
         <!-- Slide 0: Meio de Semana (Calendário) -->
         <div class="nav-item ativo" onclick="navegarParaSlide(0)">
             <span class="nav-icon">
                 <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M17 14C17.5523 14 18 13.5523 18 13C18 12.4477 17.5523 12 17 12C16.4477 12 16 12.4477 16 13C16 13.5523 16.4477 14 17 14Z" fill="#08394E"/>
-<path d="M17 18C17.5523 18 18 17.5523 18 17C18 16.4477 17.5523 16 17 16C16.4477 16 16 16.4477 16 17C16 17.5523 16.4477 18 17 18Z" fill="#08394E"/>
-<path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z" fill="#08394E"/>
-<path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z" fill="#08394E"/>
-<path d="M7 14C7.55229 14 8 13.5523 8 13C8 12.4477 7.55229 12 7 12C6.44772 12 6 12.4477 6 13C6 13.5523 6.44772 14 7 14Z" fill="#08394E"/>
-<path d="M7 18C7.55229 18 8 17.5523 8 17C8 16.4477 7.55229 16 7 16C6.44772 16 6 16.4477 6 17C6 17.5523 6.44772 18 7 18Z" fill="#08394E"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M7 1.75C7.41421 1.75 7.75 2.08579 7.75 2.5V3.26272C8.412 3.24999 9.14133 3.24999 9.94346 3.25H14.0564C14.8586 3.24999 15.588 3.24999 16.25 3.26272V2.5C16.25 2.08579 16.5858 1.75 17 1.75C17.4142 1.75 17.75 2.08579 17.75 2.5V3.32709C18.0099 3.34691 18.2561 3.37182 18.489 3.40313C19.6614 3.56076 20.6104 3.89288 21.3588 4.64124C22.1071 5.38961 22.4392 6.33855 22.5969 7.51098C22.75 8.65018 22.75 10.1058 22.75 11.9435V14.0564C22.75 15.8941 22.75 17.3498 22.5969 18.489C22.4392 19.6614 22.1071 20.6104 21.3588 21.3588C20.6104 22.1071 19.6614 22.4392 18.489 22.5969C17.3498 22.75 15.8942 22.75 14.0565 22.75H9.94359C8.10585 22.75 6.65018 22.75 5.51098 22.5969C4.33856 22.4392 3.38961 22.1071 2.64124 21.3588C1.89288 20.6104 1.56076 19.6614 1.40314 18.489C1.24997 17.3498 1.24998 15.8942 1.25 14.0564V11.9436C1.24998 10.1058 1.24997 8.65019 1.40314 7.51098C1.56076 6.33855 1.89288 5.38961 2.64124 4.64124C3.38961 3.89288 4.33856 3.56076 5.51098 3.40313C5.7439 3.37182 5.99006 3.34691 6.25 3.32709V2.5C6.25 2.08579 6.58579 1.75 7 1.75ZM5.71085 4.88976C4.70476 5.02502 4.12511 5.27869 3.7019 5.7019C3.27869 6.12511 3.02502 6.70476 2.88976 7.71085C2.86685 7.88123 2.8477 8.06061 2.83168 8.25H21.1683C21.1523 8.06061 21.1331 7.88124 21.1102 7.71085C20.975 6.70476 20.7213 6.12511 20.2981 5.7019C19.8749 5.27869 19.2952 5.02502 18.2892 4.88976C17.2615 4.75159 15.9068 4.75 14 4.75H10C8.09318 4.75 6.73851 4.75159 5.71085 4.88976ZM2.75 12C2.75 11.146 2.75032 10.4027 2.76309 9.75H21.2369C21.2497 10.4027 21.25 11.146 21.25 12V14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25H10C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14V12Z" fill="#08394E"/>
-</svg>
+                    <path d="M17 14C17.5523 14 18 13.5523 18 13C18 12.4477 17.5523 12 17 12C16.4477 12 16 12.4477 16 13C16 13.5523 16.4477 14 17 14Z" stroke="#08394E" stroke-width="0.5" fill="#08394E"/>
+                    <path d="M17 18C17.5523 18 18 17.5523 18 17C18 16.4477 17.5523 16 17 16C16.4477 16 16 16.4477 16 17C16 17.5523 16.4477 18 17 18Z" stroke="#08394E" stroke-width="0.5" fill="#08394E"/>
+                    <path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z" stroke="#08394E" stroke-width="0.5" fill="#08394E"/>
+                    <path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z" stroke="#08394E" stroke-width="0.5" fill="#08394E"/>
+                    <path d="M7 14C7.55229 14 8 13.5523 8 13C8 12.4477 7.55229 12 7 12C6.44772 12 6 12.4477 6 13C6 13.5523 6.44772 14 7 14Z" stroke="#08394E" stroke-width="0.5" fill="#08394E"/>
+                    <path d="M7 18C7.55229 18 8 17.5523 8 17C8 16.4477 7.55229 16 7 16C6.44772 16 6 16.4477 6 17C6 17.5523 6.44772 18 7 18Z" stroke="#08394E" stroke-width="0.5" fill="#08394E"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7 1.75C7.41421 1.75 7.75 2.08579 7.75 2.5V3.26272C8.412 3.24999 9.14133 3.24999 9.94346 3.25H14.0564C14.8586 3.24999 15.588 3.24999 16.25 3.26272V2.5C16.25 2.08579 16.5858 1.75 17 1.75C17.4142 1.75 17.75 2.08579 17.75 2.5V3.32709C18.0099 3.34691 18.2561 3.37182 18.489 3.40313C19.6614 3.56076 20.6104 3.89288 21.3588 4.64124C22.1071 5.38961 22.4392 6.33855 22.5969 7.51098C22.75 8.65018 22.75 10.1058 22.75 11.9435V14.0564C22.75 15.8941 22.75 17.3498 22.5969 18.489C22.4392 19.6614 22.1071 20.6104 21.3588 21.3588C20.6104 22.1071 19.6614 22.4392 18.489 22.5969C17.3498 22.75 15.8942 22.75 14.0565 22.75H9.94359C8.10585 22.75 6.65018 22.75 5.51098 22.5969C4.33856 22.4392 3.38961 22.1071 2.64124 21.3588C1.89288 20.6104 1.56076 19.6614 1.40314 18.489C1.24997 17.3498 1.24998 15.8942 1.25 14.0564V11.9436C1.24998 10.1058 1.24997 8.65019 1.40314 7.51098C1.56076 6.33855 1.89288 5.38961 2.64124 4.64124C3.38961 3.89288 4.33856 3.56076 5.51098 3.40313C5.7439 3.37182 5.99006 3.34691 6.25 3.32709V2.5C6.25 2.08579 6.58579 1.75 7 1.75ZM5.71085 4.88976C4.70476 5.02502 4.12511 5.27869 3.7019 5.7019C3.27869 6.12511 3.02502 6.70476 2.88976 7.71085C2.86685 7.88123 2.8477 8.06061 2.83168 8.25H21.1683C21.1523 8.06061 21.1331 7.88124 21.1102 7.71085C20.975 6.70476 20.7213 6.12511 20.2981 5.7019C19.8749 5.27869 19.2952 5.02502 18.2892 4.88976C17.2615 4.75159 15.9068 4.75 14 4.75H10C8.09318 4.75 6.73851 4.75159 5.71085 4.88976ZM2.75 12C2.75 11.146 2.75032 10.4027 2.76309 9.75H21.2369C21.2497 10.4027 21.25 11.146 21.25 12V14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25H10C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14V12Z" stroke="#08394E" stroke-width="0.5" fill="#08394E"/>
+                </svg>
             </span>
         </div>
 
        <!-- Slide 1: Fim de Semana (Bíblia com Base Reta) -->
-<div class="nav-item" onclick="navegarParaSlide(1)">
-    <span class="nav-icon">
-        <svg width="210px" height="210px" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#000000" stroke-width="0.096"></g><g id="SVGRepo_iconCarrier"> <path d="M22 4.66994V16.74C22 17.7 21.22 18.5999 20.26 18.7199L19.93 18.76C17.75 19.05 14.39 20.1599 12.47 21.2199C12.21 21.3699 11.78 21.3699 11.51 21.2199L11.47 21.2C9.54997 20.15 6.20003 19.05 4.03003 18.76L3.73999 18.7199C2.77999 18.5999 2 17.7 2 16.74V4.65993C2 3.46993 2.96997 2.56994 4.15997 2.66994C6.25997 2.83994 9.43997 3.89997 11.22 5.00997L11.47 5.15993C11.76 5.33994 12.24 5.33994 12.53 5.15993L12.7 5.04995C13.33 4.65995 14.13 4.26994 15 3.91994V7.99996L17 6.66994L19 7.99996V2.77999C19.27 2.72999 19.53 2.69995 19.77 2.67995H19.83C21.02 2.57995 22 3.46994 22 4.66994Z" stroke="#08394E" stroke-width="1.6799999999999997" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 5.48999V20.49" stroke="#08394E" stroke-width="1.6799999999999997" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M19 2.78003V8L17 6.66998L15 8V3.91998C16.31 3.39998 17.77 2.98003 19 2.78003Z" stroke="#08394E" stroke-width="1.6799999999999997" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-
-    </span>
-</div>
-
+        <div class="nav-item" onclick="navegarParaSlide(1)">
+            <span class="nav-icon">
+                <svg width="210px" height="210px" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 4.66994V16.74C22 17.7 21.22 18.5999 20.26 18.7199L19.93 18.76C17.75 19.05 14.39 20.1599 12.47 21.2199C12.21 21.3699 11.78 21.3699 11.51 21.2199L11.47 21.2C9.54997 20.15 6.20003 19.05 4.03003 18.76L3.73999 18.7199C2.77999 18.5999 2 17.7 2 16.74V4.65993C2 3.46993 2.96997 2.56994 4.15997 2.66994C6.25997 2.83994 9.43997 3.89997 11.22 5.00997L11.47 5.15993C11.76 5.33994 12.24 5.33994 12.53 5.15993L12.7 5.04995C13.33 4.65995 14.13 4.26994 15 3.91994V7.99996L17 6.66994L19 7.99996V2.77999C19.27 2.72999 19.53 2.69995 19.77 2.67995H19.83C21.02 2.57995 22 3.46994 22 4.66994Z" stroke="#08394E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M12 5.48999V20.49" stroke="#08394E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M19 2.78003V8L17 6.66998L15 8V3.91998C16.31 3.39998 17.77 2.98003 19 2.78003Z" stroke="#08394E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </span>
+        </div>
 
         <!-- Slide 2: Serviço de Campo (Pasta / Pasta de Trabalho) -->
         <div class="nav-item" onclick="navegarParaSlide(2)">
             <span class="nav-icon">
                 <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7.99995 22H15.9999C20.0199 22 20.7399 20.39 20.9499 18.43L21.6999 10.43C21.9699 7.99 21.2699 6 16.9999 6H6.99995C2.72995 6 2.02995 7.99 2.29995 10.43L3.04995 18.43C3.25995 20.39 3.97995 22 7.99995 22Z" stroke="#08394E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8 6V5.2C8 3.43 8 2 11.2 2H12.8C16 2 16 3.43 16 5.2V6" stroke="#08394E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14 13V14C14 14.01 14 14.01 14 14.02C14 15.11 13.99 16 12 16C10.02 16 10 15.12 10 14.03V13C10 12 10 12 11 12H13C14 12 14 12 14 13Z" stroke="#08394E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M21.65 11C19.34 12.68 16.7 13.68 14 14.02" stroke="#08394E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M2.62 11.27C4.87 12.81 7.41 13.74 10 14.03" stroke="#08394E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+                    <path d="M7.99995 22H15.9999C20.0199 22 20.7399 20.39 20.9499 18.43L21.6999 10.43C21.9699 7.99 21.2699 6 16.9999 6H6.99995C2.72995 6 2.02995 7.99 2.29995 10.43L3.04995 18.43C3.25995 20.39 3.97995 22 7.99995 22Z" stroke="#08394E" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 6V5.2C8 3.43 8 2 11.2 2H12.8C16 2 16 3.43 16 5.2V6" stroke="#08394E" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 13V14C14 14.01 14 14.01 14 14.02C14 15.11 13.99 16 12 16C10.02 16 10 15.12 10 14.03V13C10 12 10 12 11 12H13C14 12 14 12 14 13Z" stroke="#08394E" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21.65 11C19.34 12.68 16.7 13.68 14 14.02" stroke="#08394E" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2.62 11.27C4.87 12.81 7.41 13.74 10 14.03" stroke="#08394E" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </span>
         </div>
     </nav>
-
-
-
-
     <script>
         const URL_PLANILHA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSBuS_Qe2LkVH7QEPbSvoFn50e7I71Waljbuk8b2UR1wxGkYZMoeEZUy7Moy1DF4pMfRlRsn0tyNDu4/pub?output=csv";
         const URL_TEMAS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRGAcOIMZpt2HD2XMZWqEnV5QjF7322mxVRjI-s3hsGsSzAw6T45pGhCczn0tNzQUQeYcnQ4R3SCyAS/pub?gid=1453510933&single=true&output=tsv";
@@ -861,18 +972,17 @@
         });
     </script>
     <script>
-    function verificarLembreteSemanal() {
-        const UMA_SEMANA_EM_MS = 7 * 24 * 60 * 60 * 1000;
-        const agora = new Date().getTime();
-        const ultimaData = localStorage.getItem('dataUltimoLembrete');
+        function verificarLembreteSemanal() {
+            const UMA_SEMANA_EM_MS = 7 * 24 * 60 * 60 * 1000;
+            const agora = new Date().getTime();
+            const ultimaData = localStorage.getItem('dataUltimoLembrete');
 
-        if (!ultimaData || (agora - ultimaData) > UMA_SEMANA_EM_MS) {
-            alert("Lembrete Semanal: Não esqueça de conferir o Designa hoje!");
-            localStorage.setItem('dataUltimoLembrete', agora);
+            if (!ultimaData || (agora - ultimaData) > UMA_SEMANA_EM_MS) {
+                alert("Lembrete Semanal: Não esqueça de conferir o Designa hoje!");
+                localStorage.setItem('dataUltimoLembrete', agora);
+            }
         }
-    }
-    verificarLembreteSemanal();
-</script>
-
+        verificarLembreteSemanal();
+    </script>
 </body>
 </html>
